@@ -10,7 +10,7 @@ import Manager.BulletManager;
 import Point.Point;
 
 public class Bullet {
-	private BulletManager bulletManager = new BulletManager();
+	private BulletManager bulletManager = BulletManager.GetInstance();
 	
 	public static enum BulletOwner {
 		PLAYER,

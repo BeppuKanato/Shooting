@@ -33,10 +33,10 @@ public class BulletManager {
 	public void RemoveBullets (Bullet bullet) {
 		switch (bullet.GetOwner().ordinal()) {
 		case 0:
-			AddBulletsList(playerBullets, bullet);
+			RemoveBulletsList(enemyBullets, bullet);
 			break;
 		case 1:
-			AddBulletsList(enemyBullets, bullet);
+			RemoveBulletsList(enemyBullets, bullet);
 			break;
 		}
 	}

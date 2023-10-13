@@ -15,8 +15,8 @@ import Point.Point;
 
 //PA = plyerA
 public class PA extends Player{
-	
-	public PA (Pane root, int maxHP, float speed) {
+
+		public PA (Pane root, int maxHP, float speed) {
 		super(maxHP, speed);
 		
 		this.color = Color.RED;
@@ -65,7 +65,8 @@ public class PA extends Player{
 	}
 	
 	private void CreateNewBulllet (Pane root, Point position) {
-		Bullet newBullet = new PlayerBullet(root, position);	
+		// Bullet newBullet = new PlayerBullet(root, position);
+		new PlayerBullet(root, position);	
 	}
 }
 //this.SetPoint(this.GetPoint().GetX(), this.GetPoint().GetY() + this.GetSpeed());

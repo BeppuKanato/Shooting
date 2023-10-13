@@ -22,6 +22,7 @@ public class PlayerBullet extends Bullet {
 	
 	@Override
 	public void BulletMove () {
+		System.out.println("Move");
 		float moveX = this.GetPosition().GetX();
 		float moceY = this.GetPosition().GetY() - this.GetSpeed();
 		
