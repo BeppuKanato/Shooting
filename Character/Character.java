@@ -1,6 +1,6 @@
 // package application.Character;
 package Character;
-import Point.Point;
+import Common.Point;
 // import application.Point;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
@@ -11,16 +11,16 @@ public class Character {
 	private double speed;
 	private int shootDelay;
 	private int shootRate;
+	private double hitBox;
 	
 	private Point position = new Point();
 	
 	protected Shape charShape;
 	protected Color color;
 	
-	public Character(int maxHP, double speed, int shootRate, double firstPosX, double firstPosY) {
+	public Character(int maxHP, double firstPosX, double firstPosY) {
 		this.maxHP = maxHP;
 		this.nowHP = maxHP;
-		this.speed = speed;
 
 		this.shootDelay = 0;
 		this.shootRate = shootRate;
@@ -40,9 +40,25 @@ public class Character {
 	public int GetShootRate () {
 		return this.shootRate;
 	}
+
+	public void SetShootRate (int shootRate) {
+		this.shootRate = shootRate;
+	}
 	
 	public double GetSpeed () {
 		return this.speed;
+	}
+
+	public void SetSpeed (double speed) {
+		this.speed = speed;
+	}
+
+	public double GetHitBox () {
+		return this.hitBox;
+	}
+
+	public void SetHitBox (double hitBox) {
+		this.hitBox = hitBox;
 	}
 	
 	public void DrowChar() {

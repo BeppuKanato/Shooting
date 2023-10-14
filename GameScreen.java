@@ -2,7 +2,8 @@
 
 // import application.Manager.BulletManager;
 // import application.Manager.PlayerManager;
-import Manager.BulletManager;
+import Manager.PlayerBulletManager;
+import Manager.EnemyBulletManager;
 import Manager.EnemyManager;
 import Manager.PlayerManager;
 import javafx.scene.Scene;
@@ -11,8 +12,11 @@ import javafx.stage.Stage;
 
 public class GameScreen {
 	private GameSetting gameSetting = GameSetting.GetInstance();
+
 	private PlayerManager playerManager = PlayerManager.GetInstance();
-	private BulletManager bulletManager = BulletManager.GetInstance();
+	private PlayerBulletManager playerBulletsManager = PlayerBulletManager.GetInstance();
+
+	private EnemyBulletManager enemyBulletsManager = EnemyBulletManager.GetInstance();
 	private EnemyManager enemyManager = EnemyManager.GetInstance();
 	
 	private Pane gameRoot;
@@ -39,7 +43,8 @@ public class GameScreen {
 	
 	public void DrawGameScreen () {
 		playerManager.DrawPlayer();
-		bulletManager.DrawBullets();
+		playerBulletsManager.DrawBullets();
 		enemyManager.DrawEnemys();
+		enemyBulletsManager.DrawBullets();
 	}
 }

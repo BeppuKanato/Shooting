@@ -6,11 +6,13 @@ package Bullet;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import javafx.scene.layout.Pane;
-import Manager.BulletManager;
-import Point.Point;
+import Manager.PlayerBulletManager;
+import Common.Point;
+import Manager.EnemyBulletManager;
 
 public class Bullet {
-	private BulletManager bulletManager = BulletManager.GetInstance();
+	private PlayerBulletManager playerBulletManager = PlayerBulletManager.GetInstance();
+	private EnemyBulletManager enemyBulletsManager = EnemyBulletManager.GetInstance();
 	
 	public static enum BulletOwner {
 		PLAYER,
@@ -21,18 +23,21 @@ public class Bullet {
 	private Point position = new Point();
 	private BulletOwner owner;
 	private boolean enable;
-	
+	private	double hitBox;
 	protected Shape bulletShape;
 	protected Color color;
 	
-	public Bullet (Point position ,BulletOwner owner, double speed) {
+	public Bullet (Point position ,BulletOwner owner) {
 		this.position.SetX(position.GetX());
 		this.position.SetY(position.GetY());
 		this.owner = owner;
-		this.speed = speed;
 		this.enable = true;
-		
-		bulletManager.AddBullets(this);
+		if (this.owner == BulletOwner.PLAYER) {
+			playerBulletManager.AddBullets(this);
+		}
+		else if (this.owner == BulletOwner.ENEMY) {
+			enemyBulletsManager.AddBullets(this);
+		}
 	}
 	
 	public BulletOwner GetOwner () {
@@ -43,12 +48,24 @@ public class Bullet {
 		return this.speed;
 	}
 
+	public void SetSpeed (double speed) {
+		this.speed = speed;
+	}
+
 	public boolean GetEnable () {
 		return this.enable;
 	}
 
 	public void SetEnable (boolean enable) {
 		this.enable = enable;
+	}
+
+	public double GetHitBox () {
+		return this.hitBox;
+	}
+
+	public void SetHitBox (double hitBox) {
+		this.hitBox = hitBox;
 	}
 	
 	public void DrawBullet () {

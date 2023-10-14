@@ -1,10 +1,10 @@
 package Character;
 
+import Common.Point;
 // import application.Point;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
-import Point.Point;
 
 public class Enemy extends Character{
 	private Point p1 = new Point();
@@ -20,13 +20,13 @@ public class Enemy extends Character{
 		this.p3.SetY(p3_y);
 	}
 	
-	public Enemy (int maxHP, double speed, int shootRate, double firstPosX, double firstPosY) {
-		super(maxHP, speed, shootRate, firstPosX, firstPosY);
+	public Enemy (int maxHP, double firstPosX, double firstPosY) {
+		super(maxHP, firstPosX, firstPosY);
 		
         this.charShape = new Rectangle(36, 36);
 	}
 	
-	public void CharMove (long timer) {
+	public void CharMove (double timer) {
 	}
 	public void CharShoot (Pane root) {
 

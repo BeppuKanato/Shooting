@@ -8,19 +8,29 @@ package Character.PlayrChars;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+import javax.management.openmbean.OpenDataException;
+import javax.swing.text.Position;
+
 import Bullet.Bullet;
-import Bullet.Bullets.PlayerBullet;
+import Bullet.Bullet.BulletOwner;
+import Bullet.Bullets.LinerBullet;
 import Character.Player;
-import Point.Point;
+import Common.Point;
 
 //PA = plyerA
 public class PA extends Player{
+	private double speed = 3;
+	private double hitBox = 36;
+	private int shootRate = 10;
 
-	public PA (Pane root, int maxHP, double speed, int shootRate, double firstPosX, double firstPosY) {
-		super(maxHP, speed, shootRate, firstPosX, firstPosY);
+	public PA (Pane root, int maxHP, double firstPosX, double firstPosY) {
+		super(maxHP, firstPosX, firstPosY);
 		
 		this.color = Color.RED;
 		this.charShape.setFill(this.color);
+		this.SetSpeed(this.speed);
+		this.SetHitBox(this.hitBox);
+		this.SetShootRate(this.shootRate);
 		
 		root.getChildren().add(this.charShape);//this.charShape);
 	}
@@ -62,17 +72,22 @@ public class PA extends Player{
 				
 				bulletPosition.SetX(posX);
 				bulletPosition.SetY(posY);
+
+				Point targetPos = new Point();
+
+				targetPos.SetX(this.GetPosition().GetX());
+				targetPos.SetY(-10);
 				
-				CreateNewBulllet(root, bulletPosition);
+				CreateNewBulllet(root, bulletPosition, targetPos);
 
 				this.SetShootDelay(this.GetShootRate());
 			}
 		}
 	}
 	
-	private void CreateNewBulllet (Pane root, Point position) {
+	private void CreateNewBulllet (Pane root, Point position, Point targetPos) {
 		// Bullet newBullet = new PlayerBullet(root, position);
-		new PlayerBullet(root, position);	
+		new LinerBullet(root, position, targetPos, BulletOwner.PLAYER, Color.RED);	
 	}
 }
 //this.SetPoint(this.GetPoint().GetX(), this.GetPoint().GetY() + this.GetSpeed());

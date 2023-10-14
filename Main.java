@@ -34,10 +34,10 @@ public class Main extends Application {
 	}
 	
 	private void InitializeGame (GameScreen gameScreen) {
-		Player player = new PA(gameScreen.GetPane(), 10, 3, 10, 200, 600);
+		Player player = new PA(gameScreen.GetPane(), 10, 200, 600);
 		playerManager.SetPlayer(player);
 
-		Enemy enemy = new EA(gameScreen.GetPane(), 10, 3, 10, 200, 100);
+		Enemy enemy = new EA(gameScreen.GetPane(), 10, 200, 100);
 		enemyManager.AddEnemys(enemy);
 	}
 }
