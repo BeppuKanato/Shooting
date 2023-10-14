@@ -31,7 +31,7 @@ public class Main extends Application {
 	}
 	
 	private void InitializeGame (GameScreen gameScreen) {
-		Player player = new PA(gameScreen.GetPane(), 10, (float)3);
+		Player player = new PA(gameScreen.GetPane(), 10, 3);
 		playerManager.SetPlayer(player);
 	}
 }

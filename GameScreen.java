@@ -37,6 +37,6 @@ public class GameScreen {
 	
 	public void DrawGameScreen () {
 		playerManager.DrawPlayer();
-//		bulletManager.DrawBullets();
+		bulletManager.DrawBullets();
 	}
 }

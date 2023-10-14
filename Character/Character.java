@@ -8,23 +8,23 @@ import javafx.scene.shape.Shape;
 public class Character {
 	private int maxHP;
 	private int nowHP;
-	private float speed;
+	private double speed;
 	
 	private Point position = new Point();
 	
 	protected Shape charShape;
 	protected Color color;
 	
-	public Character(int maxHP, float speed) {
+	public Character(int maxHP, double speed) {
 		this.maxHP = maxHP;
 		this.nowHP = maxHP;
 		this.speed = speed;
 		
 		this.position.SetX(200);
-		this.position.SetY(-200);
+		this.position.SetY(600);
 	}
 	
-	public float GetSpeed () {
+	public double GetSpeed () {
 		return this.speed;
 	}
 	
@@ -37,7 +37,7 @@ public class Character {
 		return this.position;
 	}
 	
-	public void SetPosition(float x, float y) {
+	public void SetPosition(double x, double y) {
 		this.position.SetX(x);
 		this.position.SetY(y);
 	}

@@ -1,11 +1,12 @@
-// package application.Character;
 package Character;
+
 // import application.Point;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 import Point.Point;
 
-public class Player extends Character{
+public class Enemy extends Character{
 	private Point p1 = new Point();
 	private Point p2 = new Point();
 	private Point p3 = new Point();
@@ -19,17 +20,15 @@ public class Player extends Character{
 		this.p3.SetY(p3_y);
 	}
 	
-	public Player (int maxHP, double speed) {
+	public Enemy (int maxHP, double speed) {
 		super(maxHP, speed);
 		
-		this.SetShapeSize(0, 36, 36, 36, 18, 0);
-		this.charShape = new Polygon(p1.GetX(), p1.GetY(), p2.GetX(), p2.GetY(), p3.GetX(), p3.GetY());
+        this.charShape = new Rectangle(36, 36);
 	}
 	
-	public void CharMove (boolean isUp, boolean isDown, boolean isRight, boolean isLeft) {
-		System.out.println("playerクラス");
+	public void CharMove () {
 	}
-	public void CharShoot (Pane root, boolean isSpace) {
-		System.out.println("playerクラス");
+	public void CharShoot (Pane root) {
+        
 	}
 }

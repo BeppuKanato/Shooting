@@ -1,19 +1,19 @@
 package Point;
 public class Point {
-	private float x;
-	private float y;
+	private double x;
+	private double y;
 	
-	public void SetX (float x) {
+	public void SetX (double x) {
 		this.x = x;
 	}
-	public void SetY (float y) {
+	public void SetY (double y) {
 		this.y = y;
 	}
 	
-	public float GetX () {
+	public double GetX () {
 		return this.x;
 	}
-	public float GetY () {
+	public double GetY () {
 		return this.y;
 	}
 }

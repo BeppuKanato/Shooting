@@ -12,6 +12,10 @@ public class BulletManager {
 	private List<Bullet> playerBullets = new ArrayList<Bullet>();
 	private List<Bullet> enemyBullets = new ArrayList<Bullet>();
 	
+	private BulletManager () {
+
+	}
+
 	public static BulletManager GetInstance() {
 		if (instance == null) {
 			instance = new BulletManager();
@@ -29,11 +33,26 @@ public class BulletManager {
 			break;
 		}
 	}
+
+	public void CheckRemoveBullet () {
+		for (Bullet bullet : playerBullets) {
+			boolean rtn = bullet.BulletRemove();
+			if (rtn) {
+				RemoveBullets(bullet);
+			}
+		}
+		for (Bullet bullet : enemyBullets) {
+			boolean rtn = bullet.BulletRemove();
+			if (rtn) {
+				RemoveBullets(bullet);
+			}
+		}
+	}
 	
 	public void RemoveBullets (Bullet bullet) {
 		switch (bullet.GetOwner().ordinal()) {
 		case 0:
-			RemoveBulletsList(enemyBullets, bullet);
+			RemoveBulletsList(playerBullets, bullet);
 			break;
 		case 1:
 			RemoveBulletsList(enemyBullets, bullet);
@@ -67,8 +86,8 @@ public class BulletManager {
 	}
 	
 	private void MoveBulletsList (List<Bullet> bullets) {
-		bullets.forEach(bullet -> {
+		for (Bullet bullet : bullets) {
 			bullet.BulletMove();
-		});
+		}
 	}
 }

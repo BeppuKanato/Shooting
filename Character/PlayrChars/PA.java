@@ -16,7 +16,7 @@ import Point.Point;
 //PA = plyerA
 public class PA extends Player{
 
-		public PA (Pane root, int maxHP, float speed) {
+	public PA (Pane root, int maxHP, double speed) {
 		super(maxHP, speed);
 		
 		this.color = Color.RED;
@@ -27,8 +27,8 @@ public class PA extends Player{
 
 	@Override
 	public void CharMove(boolean isUp, boolean isDown, boolean isRight, boolean isLeft) {
-		float moveX = 0;
-		float moveY = 0;
+		double moveX = 0;
+		double moveY = 0;
 		if (isUp) {
 			moveY -= this.GetSpeed();
 		}
@@ -44,7 +44,7 @@ public class PA extends Player{
 		this.UpdateCharPosition(moveX, moveY);
 	}
 	
-	private void UpdateCharPosition (float moveX, float moveY) {
+	private void UpdateCharPosition (double moveX, double moveY) {
 		this.SetPosition(this.GetPosition().GetX() + moveX, this.GetPosition().GetY() + moveY);
 	}
 	
@@ -52,8 +52,8 @@ public class PA extends Player{
 	public void CharShoot (Pane root, boolean isSpace) {
 		
 		if (isSpace) {
-			float posX = this.GetPosition().GetX();
-			float posY = this.GetPosition().GetY() - 60;
+			double posX = this.GetPosition().GetX() + 16;
+			double posY = this.GetPosition().GetY() - 10;
 			
 			Point bulletPosition = new Point();
 			

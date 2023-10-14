@@ -10,6 +10,10 @@ public class PlayerManager {
 	private static PlayerManager instance;
 	
 	private Player player;
+
+	private PlayerManager () {
+
+	}
 	
 	public static PlayerManager GetInstance() {
 		if (instance == null) {
@@ -28,7 +32,7 @@ public class PlayerManager {
 	
 	public void PlayerShoot (Pane root, boolean isSpace) {
 		this.player.CharShoot(root, isSpace);
-	}
+	} 
 	
 	public void SetPlayer (Player player) {
 		this.player = player;

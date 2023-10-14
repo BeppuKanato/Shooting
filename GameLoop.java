@@ -34,14 +34,14 @@ public class GameLoop extends AnimationTimer{
 	@Override
 	public void handle (long now) {
 		if (now - lastUpdateTime >= INTERVAL) {
+			this.gameScreen.DrawGameScreen();
 			
-			this.PlayerControlle();
+ 			this.PlayerControlle();
 			this.playerManager.PlayerMove(this.isUpPressed, this.isDownPressed, this.isRightPressed, this.isLeftPressed);
 			this.playerManager.PlayerShoot(this.gameScreen.GetPane(), this.isSpacePressed);
 			
 			this.bulletManager.MoveBullets();
-			
-			this.gameScreen.DrawGameScreen();
+			this.bulletManager.CheckRemoveBullet();
 			
 			lastUpdateTime = now;
 		}

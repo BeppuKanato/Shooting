@@ -17,15 +17,16 @@ public class Bullet {
 		ENEMY
 	}
 	
-	private float speed;
+	private double speed;
 	private Point position = new Point();
 	private BulletOwner owner;
 	
 	protected Shape bulletShape;
 	protected Color color;
 	
-	public Bullet (Point position ,BulletOwner owner, float speed) {
-		this.position = position;
+	public Bullet (Point position ,BulletOwner owner, double speed) {
+		this.position.SetX(position.GetX());
+		this.position.SetY(position.GetY());
 		this.owner = owner;
 		this.speed = speed;
 		
@@ -36,7 +37,7 @@ public class Bullet {
 		return this.owner;
 	}
 	
-	public float GetSpeed () {
+	public double GetSpeed () {
 		return this.speed;
 	}
 	
@@ -49,12 +50,17 @@ public class Bullet {
 		return this.position;
 	}
 	
-	public void SetPosition (float x, float y) {
+	public void SetPosition (double x, double y) {
 		this.position.SetX(x);
 		this.position.SetY(y);
 	}
 	
 	public void BulletMove () {
 		System.out.println("BulletクラスのMoveです");
+	}
+
+	public boolean BulletRemove () {
+		System.out.println("BulletクラスのRemoveです");
+		return true;
 	}
 }
