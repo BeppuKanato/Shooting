@@ -6,12 +6,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import Bullet.Bullet.BulletOwner;
 import Bullet.Bullets.LinerBullet;
+import Bullet.Bullets.SpiralBullet;
 
 
 public class EA extends Enemy{
     private double speed = 1;
     private double hitBox = 36;
-    private int shootRate = 20;
+    private int shootRate = 10000;
 
     public EA (Pane root, int maxHP, double firstPosX, double firstPosY) {
 		super(maxHP, firstPosX, firstPosY);
@@ -62,6 +63,7 @@ public class EA extends Enemy{
 
     private void CreateNewBulllet (Pane root, Point position, Point targetPos) {
 		// Bullet newBullet = new PlayerBullet(root, position);
-		new LinerBullet(root, position, targetPos, BulletOwner.ENEMY, Color.BLUE);	
+		// new LinerBullet(root, position, targetPos, BulletOwner.ENEMY, Color.BLUE);
+        // new SpiralBullet(root, position, BulletOwner.ENEMY, Color.BLUE);	
 	}
 }

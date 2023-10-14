@@ -10,7 +10,7 @@ import Manager.PlayerBulletManager;
 import Common.Point;
 import Manager.EnemyBulletManager;
 
-public class Bullet {
+public abstract class Bullet {
 	private PlayerBulletManager playerBulletManager = PlayerBulletManager.GetInstance();
 	private EnemyBulletManager enemyBulletsManager = EnemyBulletManager.GetInstance();
 	
@@ -82,13 +82,9 @@ public class Bullet {
 		this.position.SetY(y);
 	}
 	
-	public void BulletMove (double timer) {
-		System.out.println("BulletクラスのMoveです");
-	}
+	public abstract void BulletMove (double timer);
 
-	public void BulletRemove () {
-		System.out.println("BulletクラスのRemoveです");
-	}
+	public abstract void BulletRemove ();
 
 	public void DeleteShape (Pane root) {
 		root.getChildren().remove(this.bulletShape);

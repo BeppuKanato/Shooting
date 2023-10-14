@@ -58,7 +58,7 @@ public class GameLoop extends AnimationTimer{
 			this.playerBulletsManager.CheckRemoveBullet(this.gameScreen.GetPane());
 			this.playerBulletsManager.IsCollidingWithEnemy(this.gameScreen.GetPane());
 
-			this.enemyManager.EnemysMove(moveBaseTimer);
+			// this.enemyManager.EnemysMove(moveBaseTimer);
 			this.enemyManager.EnemysShoot(this.gameScreen.GetPane());
 
 			this.enemyBulletsManager.BulletsMove(moveBaseTimer);
