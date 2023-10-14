@@ -82,7 +82,7 @@ public class Bullet {
 		this.position.SetY(y);
 	}
 	
-	public void BulletMove () {
+	public void BulletMove (double timer) {
 		System.out.println("BulletクラスのMoveです");
 	}
 

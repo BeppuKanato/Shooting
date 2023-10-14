@@ -14,13 +14,13 @@ import Bullet.Bullet;
 import Common.MathUtils;
 import Common.Point;
 
-public class LinerBullet extends Bullet {
+public class SpiralBullet extends Bullet {
 	private double bulletSpeed = 8;
 	private double hitBox = 5;
 
 	private Point targetPos;
 
-	public LinerBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color) {
+	public SpiralBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color) {
 		super(position, owner);
 		this.color = color;
 		this.bulletShape = new Circle(0, 0, 10);
@@ -33,10 +33,14 @@ public class LinerBullet extends Bullet {
 	
 	@Override
 	public void BulletMove (double timer) {
-		double direction = MathUtils.GetDirection(this.GetPosition(), targetPos);
 
-		double moveX = this.GetPosition().GetX() + this.GetSpeed() * Math.cos(direction);
-		double moveY = this.GetPosition().GetY() + this.GetSpeed() * Math.sin(direction);
+		double a = 1;
+
+		// double moveX = this.GetPosition().GetX() + this.GetSpeed() * Math.cos(direction);
+		// double moveY = this.GetPosition().GetY() + this.GetSpeed() * Math.sin(direction);
+
+		double moveX = this.GetPosition().GetX() + (a * timer * Math.cos(timer));
+		double moveY = this.GetPosition().GetY() + (a * timer * Math.sin(timer));
 		
 		this.SetPosition(moveX, moveY);
 	}

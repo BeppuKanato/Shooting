@@ -54,14 +54,14 @@ public class GameLoop extends AnimationTimer{
 			this.playerManager.PlayerMove(this.isUpPressed, this.isDownPressed, this.isRightPressed, this.isLeftPressed);
 			this.playerManager.PlayerShoot(this.gameScreen.GetPane(), this.isSpacePressed);
 			
-			this.playerBulletsManager.BulletsMove();
+			this.playerBulletsManager.BulletsMove(moveBaseTimer);
 			this.playerBulletsManager.CheckRemoveBullet(this.gameScreen.GetPane());
 			this.playerBulletsManager.IsCollidingWithEnemy(this.gameScreen.GetPane());
 
 			this.enemyManager.EnemysMove(moveBaseTimer);
 			this.enemyManager.EnemysShoot(this.gameScreen.GetPane());
 
-			this.enemyBulletsManager.BulletsMove();
+			this.enemyBulletsManager.BulletsMove(moveBaseTimer);
 			this.enemyBulletsManager.CheckRemoveBullet(this.gameScreen.GetPane());
 			
 			lastUpdateTime = now;

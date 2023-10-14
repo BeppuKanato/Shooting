@@ -47,9 +47,9 @@ public class EnemyBulletManager {
 		}
 	}
 	
-	public void BulletsMove () {
+	public void BulletsMove (double timer) {
 		for (Bullet bullet : enemyBullets) {
-			bullet.BulletMove();
+			bullet.BulletMove(timer);
 		}
 	}
 }

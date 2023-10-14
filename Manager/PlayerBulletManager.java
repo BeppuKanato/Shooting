@@ -54,9 +54,9 @@ public class PlayerBulletManager {
 		}
 	}
 	
-	public void BulletsMove () {
+	public void BulletsMove (double timer) {
         for (Bullet bullet : playerBullets) {
-            bullet.BulletMove();
+            bullet.BulletMove(timer);
         }
 	}
 }
