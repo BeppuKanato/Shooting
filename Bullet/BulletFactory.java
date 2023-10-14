@@ -15,33 +15,33 @@ import javafx.scene.paint.Color;
 public class BulletFactory {
     private static BulletFactory instance;
 
-    public Bullet CreateLinerBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, boolean moveTrigger)  {
-        LinerBullet bullet = new LinerBullet(root, position, targetPos, owner, color, moveTrigger);
+    public Bullet CreateLinerBullet (Pane root, BulletParameters bulletParameters)  {
+        LinerBullet bullet = new LinerBullet(root, bulletParameters);
 
         return bullet;
     }
 
-    public Bullet CreateSpiralBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, double timer, boolean moveTrigger) {
-        SpiralBullet bullet = new SpiralBullet(root, position, targetPos, owner, color, timer, moveTrigger);
+    public Bullet CreateSpiralBullet (Pane root, BulletParameters bulletParams) {
+        SpiralBullet bullet = new SpiralBullet(root, bulletParams);
 
         return bullet;
     }
 
     
-    public Bullet CreateHypoCycloidBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, double timer, boolean moveTrigger) {
-        HypoCycloidBullet bullet = new HypoCycloidBullet(root, position, targetPos, owner, color, timer, moveTrigger);
+    public Bullet CreateHypoCycloidBullet (Pane root, BulletParameters bulletParams) {
+        HypoCycloidBullet bullet = new HypoCycloidBullet(root, bulletParams);
 
         return bullet;
     }
 
-    public Bullet CreateRoseCurveBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, double timer, boolean moveTrigger) {
-        RoseCurveBullet bullet = new RoseCurveBullet(root, position, targetPos, owner, color, timer, moveTrigger);
+    public Bullet CreateRoseCurveBullet (Pane root, BulletParameters bulletParams) {
+        RoseCurveBullet bullet = new RoseCurveBullet(root, bulletParams);
 
         return bullet;
     }
 
-    public Bullet CreateParabolaBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, double timer, boolean moveTrigger) {
-        ParabolaBullet bullet = new ParabolaBullet(root, position, targetPos, owner, color, timer, moveTrigger);
+    public Bullet CreateParabolaBullet (Pane root, BulletParameters bulletParams) {
+        ParabolaBullet bullet = new ParabolaBullet(root, bulletParams);
 
         return bullet;
     }

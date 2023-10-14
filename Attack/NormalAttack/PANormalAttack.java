@@ -2,7 +2,9 @@ package Attack.NormalAttack;
 
 import Bullet.BulletParameters;
 import Bullet.Bullet.BulletOwner;
+import Common.Point;
 import Manager.PlayerBulletManager;
+import javafx.scene.paint.Color;
 
 public class PANormalAttack extends NormalAttack{
     private BulletParameters bulletType1Param = new BulletParameters();
@@ -10,9 +12,9 @@ public class PANormalAttack extends NormalAttack{
 
     private int bulletType1ShootDelay;
     private int bulletType2ShootDelay;
-    public PANormalAttack () {
-        this.BulletParamSetting(bulletType1Param, 1, BulletOwner.PLAYER, true, true, new double[10], 5);
-        this.BulletParamSetting(bulletType2Param, 1, BulletOwner.PLAYER, true, true, new double[10], 5);
+    public PANormalAttack (double x, double y) {
+        this.BulletParamSetting(bulletType1Param, 1, x, y, BulletOwner.PLAYER, true, true, new double[10], 5, Color.RED);
+        this.BulletParamSetting(bulletType2Param, 1, x, y, BulletOwner.PLAYER, true, true, new double[10], 5, Color.RED);
 
         bulletType1ShootDelay = 0;
         bulletType2ShootDelay = 0;

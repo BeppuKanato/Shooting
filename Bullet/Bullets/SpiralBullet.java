@@ -11,6 +11,7 @@ import javafx.scene.shape.Circle;
 import javax.swing.text.Position;
 
 import Bullet.Bullet;
+import Bullet.BulletParameters;
 import Common.MathUtils;
 import Common.Point;
 
@@ -21,28 +22,24 @@ public class SpiralBullet extends Bullet {
 	private double a = 1;
 	private Point targetPos;
 
-	public SpiralBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, double timer, boolean moveTrigger) {
-		super(owner, moveTrigger);
-		this.color = color;
+	public SpiralBullet (Pane root, BulletParameters bulletParams) {
+		super(bulletParams);
 		this.bulletShape = new Circle(0, 0, 10);
-		this.bulletShape.setFill(color);
-		this.SetSpeed(this.bulletSpeed);
-		this.SetHitBox(this.hitBox);
+		this.bulletShape.setFill(bulletParams.GetColor());
 
 		this.targetPos = targetPos;
 		root.getChildren().add(bulletShape);
-
-		this.SetPosition(position.GetX(), position.GetY());
 	}
 	
 	@Override
 	public void BulletMove (double timer) {
+		BulletParameters bulletParams = this.GetBulletParams();
 
-		double moveSpeed = timer * this.GetSpeed();
+		double moveSpeed = timer * bulletParams.GetSpeed();
 		double moveX = 200 + (a * moveSpeed * Math.cos(timer));
 		double moveY = 100 + (a * moveSpeed * Math.sin(timer));
 		
-		this.SetPosition(moveX, moveY);
+		bulletParams.SetPosition(moveX, moveY);
 	}
 
 	@Override

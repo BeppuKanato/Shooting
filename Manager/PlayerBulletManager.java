@@ -41,7 +41,7 @@ public class PlayerBulletManager {
 	public void CheckRemoveBullet (Pane root) {
 		for (Bullet bullet : playerBullets) {
 			bullet.BulletRemove();
-			if (!bullet.GetEnable()) {
+			if (!bullet.GetBulletParams().GetEnable()) {
 				RemoveBullets(bullet);
 				bullet.DeleteShape(root);
 			}
@@ -80,7 +80,7 @@ public class PlayerBulletManager {
 	
 	public void BulletsMove (double timer) {
         for (Bullet bullet : playerBullets) {
-			if (bullet.GetMoveTrigger()) {
+			if (bullet.GetBulletParams().GetMoveTrigger()) {
             	bullet.BulletMove(timer);
 			}
         }

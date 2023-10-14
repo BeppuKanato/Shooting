@@ -9,42 +9,38 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 import Bullet.Bullet;
+import Bullet.BulletParameters;
 import Common.MathUtils;
 import Common.Point;
 
 public class LinerBullet extends Bullet {
-	private double bulletSpeed = 5;
-	private double hitBox = 5;
-
 	private Point targetPos;
 
-	public LinerBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, boolean moveTrigger) {
-		super(owner, moveTrigger);
-		this.color = color;
+	public LinerBullet (Pane root, BulletParameters bulletParams) {
+		super(bulletParams);
 		this.bulletShape = new Circle(0, 0, 10);
-		this.bulletShape.setFill(color);
-		this.SetSpeed(this.bulletSpeed);
-		this.SetHitBox(this.hitBox);
+		this.bulletShape.setFill(this.GetBulletParams().GetColor());
 		this.targetPos = targetPos;
 		root.getChildren().add(bulletShape);
-		this.SetPosition(position.GetX(), position.GetY());
 	}
 	
 	@Override
 	public void BulletMove (double timer) {
-		double direction = MathUtils.GetDirection(this.GetPosition(), targetPos);
+		BulletParameters bulletParam = this.GetBulletParams();
+		double direction = MathUtils.GetDirection(bulletParam.GetPosition(), targetPos);
 
-		double moveX = this.GetPosition().GetX() + this.GetSpeed() * Math.cos(direction);
-		double moveY = this.GetPosition().GetY() + this.GetSpeed() * Math.sin(direction);
+		double moveX = bulletParam.GetPosition().GetX() + bulletParam.GetSpeed() * Math.cos(direction);
+		double moveY = bulletParam.GetPosition().GetY() + bulletParam.GetSpeed() * Math.sin(direction);
 		
-		this.SetPosition(moveX, moveY);
+		bulletParam.SetPosition(moveX, moveY);
 	}
 
 	@Override
 	public void BulletRemove () {
-		double distance = MathUtils.GetDistance(this.GetPosition(), targetPos);
+		BulletParameters bulletParam = this.GetBulletParams();
+		double distance = MathUtils.GetDistance(bulletParam.GetPosition(), targetPos);
 		if (distance <= 10) {
-			this.SetEnable(false);
+			bulletParam.SetEnable(false);
 		}
 	}
 }

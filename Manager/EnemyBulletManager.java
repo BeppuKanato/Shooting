@@ -34,7 +34,7 @@ public class EnemyBulletManager {
 	public void CheckRemoveBullet (Pane root) {
 		for (Bullet bullet : enemyBullets) {
 			bullet.BulletRemove();
-			if (!bullet.GetEnable()) {
+			if (!bullet.GetBulletParams().GetEnable()) {
 				RemoveBullets(bullet);
 				bullet.DeleteShape(root);
 			}
@@ -73,7 +73,7 @@ public class EnemyBulletManager {
 	
 	public void BulletsMove (double timer) {
 		for (Bullet bullet : enemyBullets) {
-			if (bullet.GetMoveTrigger()) {
+			if (bullet.GetBulletParams().GetMoveTrigger()) {
 				bullet.BulletMove(timer);
 			}
 		}

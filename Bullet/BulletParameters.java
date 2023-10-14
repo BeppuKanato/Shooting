@@ -5,7 +5,7 @@ import Common.Point;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
-public class BulletParametars {
+public class BulletParameters {
 	
 	private double speed;
 	private Point position = new Point();
@@ -14,8 +14,7 @@ public class BulletParametars {
     private Point targetPos = new Point();
     private double[] shapeSizes;
     private double hitBox;
-	protected Shape bulletShape;
-	protected Color color;
+	private Color color;
 
 	private boolean moveTrigger;
 
@@ -25,6 +24,15 @@ public class BulletParametars {
 
 	public void SetMoveTrigger (boolean moveTrigger) {
 		this.moveTrigger = moveTrigger;
+	}
+
+	public Point GetPosition () {
+		return this.position;
+	}
+
+	public void SetPosition (double x, double y) {
+		this.position.SetX(x);
+		this.position.SetY(y);
 	}
 	
 	public BulletOwner GetOwner () {
@@ -66,4 +74,12 @@ public class BulletParametars {
     public void SetHitBox (double hitBox) {
         this.hitBox = hitBox;
     }
+
+	public Color GetColor () {
+		return this.color;
+	}
+
+	public void SetColor (Color color) {
+		this.color = color;
+	}
 }

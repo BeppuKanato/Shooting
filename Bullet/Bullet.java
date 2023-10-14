@@ -18,77 +18,27 @@ public abstract class Bullet {
 		PLAYER,
 		ENEMY
 	}
-	
-	private double speed;
-	private Point position = new Point();
-	private BulletOwner owner;
-	private boolean enable;
-	private	double hitBox;
-	protected Shape bulletShape;
-	protected Color color;
 
-	private boolean moveTrigger;
+	private BulletParameters bulletParams;
+	protected Shape bulletShape;
 	
-	public Bullet (BulletOwner owner, boolean moveTrigger) {
-		this.owner = owner;
-		this.enable = true;
-		this.moveTrigger = moveTrigger;
-		if (this.owner == BulletOwner.PLAYER) {
+	public Bullet (BulletParameters bulletParams) {
+		this.bulletParams = bulletParams;
+		if (this.bulletParams.GetOwner() == BulletOwner.PLAYER) {
 			playerBulletManager.AddBullets(this);
 		}
-		else if (this.owner == BulletOwner.ENEMY) {
+		else if (this.bulletParams.GetOwner() == BulletOwner.ENEMY) {
 			enemyBulletsManager.AddBullets(this);
 		}
 	}
 
-	public boolean GetMoveTrigger () {
-		return this.moveTrigger;
-	}
-
-	public void SetMoveTrigger (boolean moveTrigger) {
-		this.moveTrigger = moveTrigger;
-	}
-	
-	public BulletOwner GetOwner () {
-		return this.owner;
-	}
-	
-	public double GetSpeed () {
-		return this.speed;
-	}
-
-	public void SetSpeed (double speed) {
-		this.speed = speed;
-	}
-
-	public boolean GetEnable () {
-		return this.enable;
-	}
-
-	public void SetEnable (boolean enable) {
-		this.enable = enable;
-	}
-
-	public double GetHitBox () {
-		return this.hitBox;
-	}
-
-	public void SetHitBox (double hitBox) {
-		this.hitBox = hitBox;
+	public BulletParameters GetBulletParams () {
+		return this.bulletParams;
 	}
 	
 	public void DrawBullet () {
-		this.bulletShape.setTranslateX(this.position.GetX());
-		this.bulletShape.setTranslateY(this.position.GetY());
-	}
-	
-	public Point GetPosition () {
-		return this.position;
-	}
-	
-	public void SetPosition (double x, double y) {
-		this.position.SetX(x);
-		this.position.SetY(y);
+		this.bulletShape.setTranslateX(this.bulletParams.GetPosition().GetX());
+		this.bulletShape.setTranslateY(this.bulletParams.GetPosition().GetY());
 	}
 	
 	public abstract void BulletMove (double timer);

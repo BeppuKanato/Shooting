@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 import Bullet.Bullet;
+import Bullet.BulletParameters;
 import Common.Point;
 
 public class RoseCurveBullet extends Bullet {
@@ -16,32 +17,28 @@ public class RoseCurveBullet extends Bullet {
 
 	private Point targetPos;
 
-	public RoseCurveBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, double timer, boolean moveTrigger) {
-		super(owner, moveTrigger);
-		this.color = color;
+	public RoseCurveBullet (Pane root, BulletParameters bulletParams) {
+		super(bulletParams);
 		this.bulletShape = new Circle(0, 0, 10);
-		this.bulletShape.setFill(color);
-		this.SetSpeed(this.bulletSpeed);
-		this.SetHitBox(this.hitBox);
+		this.bulletShape.setFill(bulletParams.GetColor());
 
-		this.targetPos = targetPos;
+		// this.targetPos = targetPos;
 		root.getChildren().add(bulletShape);
-
-		this.SetPosition(position.GetX(), position.GetY());
 	}
 	
 	@Override
 	public void BulletMove (double timer) {
+		BulletParameters bulletParams = this.GetBulletParams();
 
 		double a = (double)1 / 3;
 		int n = 150;
 
-		double moveSpeed = timer * this.GetSpeed();
+		double moveSpeed = timer * bulletParams.GetSpeed();
 
 		double moveX = 200 + n * (Math.sin(moveSpeed * a) * Math.cos(moveSpeed));
 		double moveY = 100 + n * (Math.sin(moveSpeed * a) * Math.sin(moveSpeed));
 		
-		this.SetPosition(moveX, moveY);
+		bulletParams.SetPosition(moveX, moveY);
 	}
 
 	@Override

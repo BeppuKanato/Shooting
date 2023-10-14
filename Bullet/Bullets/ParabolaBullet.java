@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 import Bullet.Bullet;
+import Bullet.BulletParameters;
 import Common.Point;
 
 public class ParabolaBullet extends Bullet {
@@ -16,24 +17,19 @@ public class ParabolaBullet extends Bullet {
 
 	private Point targetPos;
 
-	public ParabolaBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, double timer, boolean moveTrigger) {
-		super(owner, moveTrigger);
-		this.color = color;
+	public ParabolaBullet (Pane root, BulletParameters bulletParams) {
+		super(bulletParams);
 		this.bulletShape = new Circle(0, 0, 10);
-		this.bulletShape.setFill(color);
-		this.SetSpeed(this.bulletSpeed);
-		this.SetHitBox(this.hitBox);
+		this.bulletShape.setFill(bulletParams.GetColor());
 
-		this.targetPos = targetPos;
+		// this.targetPos = targetPos;
 		root.getChildren().add(bulletShape);
-
-		this.SetPosition(position.GetX(), position.GetY());
 	}
 	
 	@Override
 	public void BulletMove (double timer) {
-
-		double moveSpeed = timer * this.GetSpeed();
+		BulletParameters bulletParams = this.GetBulletParams();
+		double moveSpeed = timer * bulletParams.GetSpeed();
 
 		double moveX = 200 * Math.cos(moveSpeed);
 
@@ -41,7 +37,7 @@ public class ParabolaBullet extends Bullet {
 		
 		double moveY = Math.sqrt(squaredmoveY);
 
-		this.SetPosition(moveX + 200, moveY + 100);
+		bulletParams.SetPosition(moveX + 200, moveY + 100);
 	}
 
 	@Override
