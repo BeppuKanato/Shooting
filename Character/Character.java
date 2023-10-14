@@ -1,11 +1,16 @@
 // package application.Character;
 package Character;
 import Common.Point;
+import Manager.EnemyBulletManager;
+import Manager.PlayerBulletManager;
 // import application.Point;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
 public class Character {
+	protected PlayerBulletManager playerBulletManager = PlayerBulletManager.GetInstance();
+	protected EnemyBulletManager enemyBulletsManager = EnemyBulletManager.GetInstance();
+
 	private int maxHP;
 	private int nowHP;
 	private double speed;

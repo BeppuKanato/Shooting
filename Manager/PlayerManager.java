@@ -30,8 +30,8 @@ public class PlayerManager {
 		this.player.CharMove(isUp, isDown, isRight, isLeft);
 	}
 	
-	public void PlayerShoot (Pane root, boolean isSpace) {
-		this.player.CharShoot(root, isSpace);
+	public void PlayerShoot (Pane root, boolean isSpace, double timer) {
+		this.player.CharShoot(root, isSpace, timer);
 	} 
 	
 	public void SetPlayer (Player player) {

@@ -26,18 +26,27 @@ public abstract class Bullet {
 	private	double hitBox;
 	protected Shape bulletShape;
 	protected Color color;
+
+	private boolean moveTrigger;
 	
-	public Bullet (Point position ,BulletOwner owner) {
-		this.position.SetX(position.GetX());
-		this.position.SetY(position.GetY());
+	public Bullet (BulletOwner owner, boolean moveTrigger) {
 		this.owner = owner;
 		this.enable = true;
+		this.moveTrigger = moveTrigger;
 		if (this.owner == BulletOwner.PLAYER) {
 			playerBulletManager.AddBullets(this);
 		}
 		else if (this.owner == BulletOwner.ENEMY) {
 			enemyBulletsManager.AddBullets(this);
 		}
+	}
+
+	public boolean GetMoveTrigger () {
+		return this.moveTrigger;
+	}
+
+	public void SetMoveTrigger (boolean moveTrigger) {
+		this.moveTrigger = moveTrigger;
 	}
 	
 	public BulletOwner GetOwner () {

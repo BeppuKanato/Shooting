@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Bullet.Bullet;
+import Bullet.Bullet.BulletOwner;
 import javafx.scene.layout.Pane;
-
+import javafx.scene.paint.Color;
 import Character.Enemy;
 import Common.MathUtils;
 import Common.Point;
@@ -42,9 +43,9 @@ public class EnemyManager {
         }
     }
 
-    public void EnemysShoot (Pane root) {
+    public void EnemysShoot (Pane root, double timer) {
         for (Enemy enemy : enemys) {
-            enemy.CharShoot(root);
+            enemy.CharShoot(root, timer);
         }
     }
 

@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
-public class Enemy extends Character{
+public abstract class Enemy extends Character{
 	private Point p1 = new Point();
 	private Point p2 = new Point();
 	private Point p3 = new Point();
@@ -26,9 +26,6 @@ public class Enemy extends Character{
         this.charShape = new Rectangle(36, 36);
 	}
 	
-	public void CharMove (double timer) {
-	}
-	public void CharShoot (Pane root) {
-
-	}
+	public abstract void CharMove (double timer);
+	public abstract void CharShoot (Pane root, double timer);
 }

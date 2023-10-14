@@ -32,12 +32,11 @@ public class EA extends Enemy{
         double moveY = 100 + 50 * (Math.sin(timer * this.GetSpeed()));
         double moveX = 200 + 120 * Math.sin((timer / 6) * this.GetSpeed());
 
-        //this.SetPosition(this.GetPosition().GetX() - 1, moveY);
         this.SetPosition(moveX, moveY);
     }
 
     @Override
-    public void CharShoot(Pane root) {
+    public void CharShoot(Pane root, double timer) {
         if (this.GetShootDelay() > 0) {
 			this.SetShootDelay(this.GetShootDelay() - 1);
         }
@@ -55,15 +54,15 @@ public class EA extends Enemy{
             targePosition.SetX(this.GetPosition().GetX());
             targePosition.SetY(810);
             
-            CreateNewBulllet(root, bulletPosition, targePosition);
+            CreateNewBulllet(root, bulletPosition, targePosition, timer);
 
             this.SetShootDelay(this.GetShootRate());
 		}
     }
 
-    private void CreateNewBulllet (Pane root, Point position, Point targetPos) {
-		// Bullet newBullet = new PlayerBullet(root, position);
-		// new LinerBullet(root, position, targetPos, BulletOwner.ENEMY, Color.BLUE);
-        // new SpiralBullet(root, position, BulletOwner.ENEMY, Color.BLUE);	
+    private void CreateNewBulllet (Pane root, Point position, Point targetPos, double timer) {
+        // this.enemyBulletsManager.CreateSpiralBullet(root, position, targetPos, BulletOwner.ENEMY, Color.BLUE, timer, true) ;
+        // this.enemyBulletsManager.CreateLinerBullet(root, position, targetPos, BulletOwner.ENEMY, Color.BLUE, true);
+        this.enemyBulletsManager.CreateHypoCycloidBullet(root, position, targetPos, BulletOwner.ENEMY, Color.BLUE, timer,true);
 	}
 }

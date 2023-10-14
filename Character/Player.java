@@ -5,7 +5,7 @@ import Common.Point;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Polygon;
 
-public class Player extends Character{
+public abstract class Player extends Character{
 	private Point p1 = new Point();
 	private Point p2 = new Point();
 	private Point p3 = new Point();
@@ -26,10 +26,6 @@ public class Player extends Character{
 		this.charShape = new Polygon(p1.GetX(), p1.GetY(), p2.GetX(), p2.GetY(), p3.GetX(), p3.GetY());
 	}
 	
-	public void CharMove (boolean isUp, boolean isDown, boolean isRight, boolean isLeft) {
-		System.out.println("playerクラス");
-	}
-	public void CharShoot (Pane root, boolean isSpace) {
-		System.out.println("playerクラス");
-	}
+	public abstract void CharMove (boolean isUp, boolean isDown, boolean isRight, boolean isLeft);
+	public abstract void CharShoot (Pane root, boolean isSpace, double timer);
 }

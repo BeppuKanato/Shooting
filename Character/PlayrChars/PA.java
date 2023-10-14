@@ -59,7 +59,7 @@ public class PA extends Player{
 	}
 	
 	@Override
-	public void CharShoot (Pane root, boolean isSpace) {
+	public void CharShoot (Pane root, boolean isSpace, double timer) {
  		if (this.GetShootDelay() > 0) {
 			this.SetShootDelay(this.GetShootDelay() - 1);
 		}
@@ -86,8 +86,7 @@ public class PA extends Player{
 	}
 	
 	private void CreateNewBulllet (Pane root, Point position, Point targetPos) {
-		// Bullet newBullet = new PlayerBullet(root, position);
-		new LinerBullet(root, position, targetPos, BulletOwner.PLAYER, Color.RED);	
+		this.playerBulletManager.CreateLinerBullet(root, position, targetPos, BulletOwner.PLAYER, Color.RED, true);
 	}
 }
 //this.SetPoint(this.GetPoint().GetX(), this.GetPoint().GetY() + this.GetSpeed());

@@ -15,31 +15,32 @@ import Common.MathUtils;
 import Common.Point;
 
 public class SpiralBullet extends Bullet {
-	private double bulletSpeed = 8;
+	private double bulletSpeed = 1;
 	private double hitBox = 5;
 	
 	private double a = 1;
+	private Point targetPos;
 
-	public SpiralBullet (Pane root, Point position, BulletOwner owner, Color color, double timer) {
-		super(position, owner);
+	public SpiralBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, double timer, boolean moveTrigger) {
+		super(owner, moveTrigger);
 		this.color = color;
-		double moveX = this.GetPosition().GetX() + (a * timer * Math.cos(timer));
-		double moveY = this.GetPosition().GetY() + (a * timer * Math.sin(timer));
 		this.bulletShape = new Circle(0, 0, 10);
 		this.bulletShape.setFill(color);
 		this.SetSpeed(this.bulletSpeed);
 		this.SetHitBox(this.hitBox);
+
+		this.targetPos = targetPos;
 		root.getChildren().add(bulletShape);
+
+		this.SetPosition(position.GetX(), position.GetY());
 	}
 	
 	@Override
 	public void BulletMove (double timer) {
 
-		// double moveX = this.GetPosition().GetX() + this.GetSpeed() * Math.cos(direction);
-		// double moveY = this.GetPosition().GetY() + this.GetSpeed() * Math.sin(direction);
-
-		double moveX = this.GetPosition().GetX() + (a * timer * Math.cos(timer));
-		double moveY = this.GetPosition().GetY() + (a * timer * Math.sin(timer));
+		double moveSpeed = timer * this.GetSpeed();
+		double moveX = this.GetPosition().GetX() + (a * moveSpeed * Math.cos(timer));
+		double moveY = this.GetPosition().GetY() + (a * moveSpeed * Math.sin(timer));
 		
 		this.SetPosition(moveX, moveY);
 	}
