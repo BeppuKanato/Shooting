@@ -10,7 +10,7 @@ import Bullet.Bullet;
 import Common.Point;
 
 public class HypoCycloidBullet extends Bullet {
-	private double bulletSpeed = 0.1;
+	private double bulletSpeed = 0.5;
 	private double hitBox = 5;
 	
 	private double a = 1;
@@ -32,13 +32,12 @@ public class HypoCycloidBullet extends Bullet {
 	@Override
 	public void BulletMove (double timer) {
 
-        double smallRadius = 0.2;
-        double bigRadius = 0.6;
-        double distance = 0.1;
+        double smallRadius = 25;
+        double bigRadius = smallRadius * 4;
         double moveSpeed = timer * this.GetSpeed();
 
-        double moveX = this.GetPosition().GetX()  + ((bigRadius - smallRadius) * Math.cos(moveSpeed) + distance * Math.cos((bigRadius - smallRadius) * moveSpeed / smallRadius));
-        double moveY = this.GetPosition().GetY() + ((bigRadius - smallRadius) * Math.sin(moveSpeed) - distance * Math.sin((bigRadius - smallRadius) * moveSpeed / smallRadius));
+        double moveX = 200 + ((bigRadius - smallRadius) * Math.cos(moveSpeed) + smallRadius * Math.cos((bigRadius - smallRadius) * moveSpeed / smallRadius));
+        double moveY = 100 + ((bigRadius - smallRadius) * Math.sin(moveSpeed) - smallRadius * Math.sin((bigRadius - smallRadius) * moveSpeed / smallRadius));
 		
 		this.SetPosition(moveX, moveY);
 	}

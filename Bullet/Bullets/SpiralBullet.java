@@ -39,8 +39,8 @@ public class SpiralBullet extends Bullet {
 	public void BulletMove (double timer) {
 
 		double moveSpeed = timer * this.GetSpeed();
-		double moveX = this.GetPosition().GetX() + (a * moveSpeed * Math.cos(timer));
-		double moveY = this.GetPosition().GetY() + (a * moveSpeed * Math.sin(timer));
+		double moveX = 200 + (a * moveSpeed * Math.cos(timer));
+		double moveY = 100 + (a * moveSpeed * Math.sin(timer));
 		
 		this.SetPosition(moveX, moveY);
 	}

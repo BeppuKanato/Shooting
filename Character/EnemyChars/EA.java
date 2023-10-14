@@ -63,6 +63,8 @@ public class EA extends Enemy{
     private void CreateNewBulllet (Pane root, Point position, Point targetPos, double timer) {
         // this.enemyBulletsManager.CreateSpiralBullet(root, position, targetPos, BulletOwner.ENEMY, Color.BLUE, timer, true) ;
         // this.enemyBulletsManager.CreateLinerBullet(root, position, targetPos, BulletOwner.ENEMY, Color.BLUE, true);
-        this.enemyBulletsManager.CreateHypoCycloidBullet(root, position, targetPos, BulletOwner.ENEMY, Color.BLUE, timer,true);
+        // this.enemyBulletsManager.CreateHypoCycloidBullet(root, position, targetPos, BulletOwner.ENEMY, Color.BLUE, timer,true);
+        //this.enemyBulletsManager.CreateRoseCurveBullet(root, position, targetPos, BulletOwner.ENEMY, Color.BLUE, timer,true);
+        this.enemyBulletsManager.CreateParabolaBullet(root, position, targetPos, BulletOwner.ENEMY, Color.BLUE, timer, true);
 	}
 }

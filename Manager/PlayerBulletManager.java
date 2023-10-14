@@ -59,6 +59,14 @@ public class PlayerBulletManager {
 	public void CreateHypoCycloidBullet (Pane root, Point position, Point tartPos ,BulletOwner owner, Color color, double timer, boolean moveTrigger) {
 		this.AddBullets(bulletFactory.CreateHypoCycloidBullet(root, position, tartPos, owner, color, timer, moveTrigger));
 	}
+
+	public void CreateRoseCurveBullet (Pane root, Point position, Point tartPos ,BulletOwner owner, Color color, double timer, boolean moveTrigger) {
+		this.AddBullets(bulletFactory.CreateRoseCurveBullet(root, position, tartPos, owner, color, timer, moveTrigger));
+	}
+
+	public void CreateParabolaBullet (Pane root, Point position, Point tartPos ,BulletOwner owner, Color color, double timer, boolean moveTrigger) {
+		this.AddBullets(bulletFactory.CreateParabolaBullet(root, position, tartPos, owner, color, timer, moveTrigger));
+	}
 	
 	public void RemoveBullets (Bullet bullet) {
 		playerBullets.remove(bullet);

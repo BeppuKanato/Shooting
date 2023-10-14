@@ -3,6 +3,8 @@ package Bullet;
 import Bullet.Bullet.BulletOwner;
 import Bullet.Bullets.HypoCycloidBullet;
 import Bullet.Bullets.LinerBullet;
+import Bullet.Bullets.ParabolaBullet;
+import Bullet.Bullets.RoseCurveBullet;
 import Bullet.Bullets.SpiralBullet;
 import Common.Point;
 import Manager.EnemyBulletManager;
@@ -28,6 +30,18 @@ public class BulletFactory {
     
     public Bullet CreateHypoCycloidBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, double timer, boolean moveTrigger) {
         HypoCycloidBullet bullet = new HypoCycloidBullet(root, position, targetPos, owner, color, timer, moveTrigger);
+
+        return bullet;
+    }
+
+    public Bullet CreateRoseCurveBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, double timer, boolean moveTrigger) {
+        RoseCurveBullet bullet = new RoseCurveBullet(root, position, targetPos, owner, color, timer, moveTrigger);
+
+        return bullet;
+    }
+
+    public Bullet CreateParabolaBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, double timer, boolean moveTrigger) {
+        ParabolaBullet bullet = new ParabolaBullet(root, position, targetPos, owner, color, timer, moveTrigger);
 
         return bullet;
     }
