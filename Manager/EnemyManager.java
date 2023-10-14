@@ -15,11 +15,15 @@ public class EnemyManager {
 
     }
 
-    public EnemyManager GetInstance () {
+    public static EnemyManager GetInstance () {
         if (instance == null) {
             instance = new EnemyManager();
         }
         return instance;
+    }
+
+    public void AddEnemys (Enemy enemy) {
+        enemys.add(enemy);
     }
 
     public void DrawEnemys () {
@@ -28,13 +32,13 @@ public class EnemyManager {
         }
     }
 
-    public void EnemyMove () {
+    public void EnemysMove (long timer) {
         for (Enemy enemy : enemys) {
-            enemy.CharMove();
+            enemy.CharMove(timer);
         }
     }
 
-    public void CharShoot (Pane root) {
+    public void EnemysShoot (Pane root) {
         for (Enemy enemy : enemys) {
             enemy.CharShoot(root);
         }

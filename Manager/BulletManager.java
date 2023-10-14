@@ -3,6 +3,7 @@ package Manager;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.layout.Pane;
 
 // import application.Bullet.Bullet;
 import Bullet.Bullet;
@@ -34,17 +35,19 @@ public class BulletManager {
 		}
 	}
 
-	public void CheckRemoveBullet () {
+	public void CheckRemoveBullet (Pane root) {
 		for (Bullet bullet : playerBullets) {
-			boolean rtn = bullet.BulletRemove();
-			if (rtn) {
+			bullet.BulletRemove();
+			if (!bullet.GetEnable()) {
 				RemoveBullets(bullet);
+				bullet.DeleteShape(root);
 			}
 		}
 		for (Bullet bullet : enemyBullets) {
-			boolean rtn = bullet.BulletRemove();
-			if (rtn) {
+			bullet.BulletRemove();
+			if (!bullet.GetEnable()) {
 				RemoveBullets(bullet);
+				bullet.DeleteShape(root);
 			}
 		}
 	}
@@ -65,7 +68,7 @@ public class BulletManager {
 		DrawBulletsList (enemyBullets);
 	}
 	
-	public void MoveBullets () {
+	public void BulletsMove () {
 		MoveBulletsList(playerBullets);
 		MoveBulletsList(enemyBullets);
 	}

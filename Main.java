@@ -5,15 +5,18 @@
 // import application.Manager.PlayerManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
+import Character.Enemy;
 import Character.Player;
 import Character.PlayrChars.PA;
+import Manager.EnemyManager;
 import Manager.PlayerManager;
+import Character.EnemyChars.EA;
 
 import javafx.stage.Stage;
 
 public class Main extends Application {
 	private PlayerManager playerManager = PlayerManager.GetInstance();
+	private EnemyManager enemyManager = EnemyManager.GetInstance();
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -31,7 +34,10 @@ public class Main extends Application {
 	}
 	
 	private void InitializeGame (GameScreen gameScreen) {
-		Player player = new PA(gameScreen.GetPane(), 10, 3);
+		Player player = new PA(gameScreen.GetPane(), 10, 3, 10, 200, 600);
 		playerManager.SetPlayer(player);
+
+		Enemy enemy = new EA(gameScreen.GetPane(), 10, 3, 10, 200, 100);
+		enemyManager.AddEnemys(enemy);
 	}
 }

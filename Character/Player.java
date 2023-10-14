@@ -19,8 +19,8 @@ public class Player extends Character{
 		this.p3.SetY(p3_y);
 	}
 	
-	public Player (int maxHP, double speed) {
-		super(maxHP, speed);
+	public Player (int maxHP, double speed, int shootRate, double firstPosX, double firstPosY) {
+		super(maxHP, speed, shootRate, firstPosX, firstPosY);
 		
 		this.SetShapeSize(0, 36, 36, 36, 18, 0);
 		this.charShape = new Polygon(p1.GetX(), p1.GetY(), p2.GetX(), p2.GetY(), p3.GetX(), p3.GetY());

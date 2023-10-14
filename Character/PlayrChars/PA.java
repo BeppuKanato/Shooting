@@ -16,8 +16,8 @@ import Point.Point;
 //PA = plyerA
 public class PA extends Player{
 
-	public PA (Pane root, int maxHP, double speed) {
-		super(maxHP, speed);
+	public PA (Pane root, int maxHP, double speed, int shootRate, double firstPosX, double firstPosY) {
+		super(maxHP, speed, shootRate, firstPosX, firstPosY);
 		
 		this.color = Color.RED;
 		this.charShape.setFill(this.color);
@@ -50,17 +50,23 @@ public class PA extends Player{
 	
 	@Override
 	public void CharShoot (Pane root, boolean isSpace) {
-		
+ 		if (this.GetShootDelay() > 0) {
+			this.SetShootDelay(this.GetShootDelay() - 1);
+		}
 		if (isSpace) {
-			double posX = this.GetPosition().GetX() + 16;
-			double posY = this.GetPosition().GetY() - 10;
-			
-			Point bulletPosition = new Point();
-			
-			bulletPosition.SetX(posX);
-			bulletPosition.SetY(posY);
-			
-			CreateNewBulllet(root, bulletPosition);
+			if (this.GetShootDelay() == 0) {
+				double posX = this.GetPosition().GetX() + 16;
+				double posY = this.GetPosition().GetY() - 10;
+				
+				Point bulletPosition = new Point();
+				
+				bulletPosition.SetX(posX);
+				bulletPosition.SetY(posY);
+				
+				CreateNewBulllet(root, bulletPosition);
+
+				this.SetShootDelay(this.GetShootRate());
+			}
 		}
 	}
 	

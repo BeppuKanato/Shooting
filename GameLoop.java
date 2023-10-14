@@ -4,6 +4,7 @@
 // import application.Manager.PlayerManager;
 
 import Manager.BulletManager;
+import Manager.EnemyManager;
 import Manager.PlayerManager;
 import javafx.animation.AnimationTimer;
 import javafx.scene.input.KeyCode;
@@ -12,6 +13,7 @@ public class GameLoop extends AnimationTimer{
 	private GameSetting gameSetting = GameSetting.GetInstance();
 	private PlayerManager playerManager = PlayerManager.GetInstance();
 	private BulletManager bulletManager = BulletManager.GetInstance();
+	private EnemyManager enemyManager = EnemyManager.GetInstance();
 	
 	private boolean isUpPressed = false;
 	private boolean isDownPressed = false;
@@ -22,6 +24,7 @@ public class GameLoop extends AnimationTimer{
 	
 	private final long TARGET_FPS;
 	private final long INTERVAL;
+	private long startTime;
 	private GameScreen gameScreen;
 	
 	private long lastUpdateTime = 0;
@@ -30,18 +33,26 @@ public class GameLoop extends AnimationTimer{
 		this.gameScreen = gameScreen;
 		this.TARGET_FPS = gameSetting.GetFPS();
 		this.INTERVAL = 1_000_000_000L / this.TARGET_FPS;
+		startTime = System.currentTimeMillis();
 	}
 	@Override
 	public void handle (long now) {
 		if (now - lastUpdateTime >= INTERVAL) {
+
+			long currentTime = System.currentTimeMillis();
+			long elapsedTime = currentTime -startTime;
+
 			this.gameScreen.DrawGameScreen();
 			
  			this.PlayerControlle();
 			this.playerManager.PlayerMove(this.isUpPressed, this.isDownPressed, this.isRightPressed, this.isLeftPressed);
 			this.playerManager.PlayerShoot(this.gameScreen.GetPane(), this.isSpacePressed);
 			
-			this.bulletManager.MoveBullets();
-			this.bulletManager.CheckRemoveBullet();
+			this.bulletManager.BulletsMove();
+			this.bulletManager.CheckRemoveBullet(this.gameScreen.GetPane());
+
+			this.enemyManager.EnemysMove(elapsedTime / 100);
+			this.enemyManager.EnemysShoot(this.gameScreen.GetPane());
 			
 			lastUpdateTime = now;
 		}

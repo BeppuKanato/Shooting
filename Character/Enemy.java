@@ -20,15 +20,15 @@ public class Enemy extends Character{
 		this.p3.SetY(p3_y);
 	}
 	
-	public Enemy (int maxHP, double speed) {
-		super(maxHP, speed);
+	public Enemy (int maxHP, double speed, int shootRate, double firstPosX, double firstPosY) {
+		super(maxHP, speed, shootRate, firstPosX, firstPosY);
 		
         this.charShape = new Rectangle(36, 36);
 	}
 	
-	public void CharMove () {
+	public void CharMove (long timer) {
 	}
 	public void CharShoot (Pane root) {
-        
+
 	}
 }

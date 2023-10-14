@@ -5,7 +5,7 @@ package Bullet;
 // import application.Manager.BulletManager;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
-
+import javafx.scene.layout.Pane;
 import Manager.BulletManager;
 import Point.Point;
 
@@ -20,6 +20,7 @@ public class Bullet {
 	private double speed;
 	private Point position = new Point();
 	private BulletOwner owner;
+	private boolean enable;
 	
 	protected Shape bulletShape;
 	protected Color color;
@@ -29,6 +30,7 @@ public class Bullet {
 		this.position.SetY(position.GetY());
 		this.owner = owner;
 		this.speed = speed;
+		this.enable = true;
 		
 		bulletManager.AddBullets(this);
 	}
@@ -39,6 +41,14 @@ public class Bullet {
 	
 	public double GetSpeed () {
 		return this.speed;
+	}
+
+	public boolean GetEnable () {
+		return this.enable;
+	}
+
+	public void SetEnable (boolean enable) {
+		this.enable = enable;
 	}
 	
 	public void DrawBullet () {
@@ -59,8 +69,11 @@ public class Bullet {
 		System.out.println("BulletクラスのMoveです");
 	}
 
-	public boolean BulletRemove () {
+	public void BulletRemove () {
 		System.out.println("BulletクラスのRemoveです");
-		return true;
+	}
+
+	public void DeleteShape (Pane root) {
+		root.getChildren().remove(this.bulletShape);
 	}
 }
