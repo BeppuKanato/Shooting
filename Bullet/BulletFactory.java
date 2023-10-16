@@ -17,8 +17,8 @@ import javafx.scene.paint.Color;
 public class BulletFactory {
     private static BulletFactory instance;
 
-    public Bullet CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos)  {
-        LinerBullet bullet = new LinerBullet(root, bulletParameters, firstPos);
+    public Bullet CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos, Point targetPos)  {
+        LinerBullet bullet = new LinerBullet(root, bulletParameters, firstPos, targetPos);
 
         return bullet;
     }

@@ -52,8 +52,8 @@ public class PlayerBulletManager {
 		}
 	}
 
-	public void CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
-		this.AddBullets(bulletFactory.CreateLinerBullet(root, bulletParameters, firstPos));
+	public void CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos, Point targetPos) {
+		this.AddBullets(bulletFactory.CreateLinerBullet(root, bulletParameters, firstPos, targetPos));
 	}
 
 	public void CreateSpiralBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {

@@ -25,7 +25,7 @@ public class PA extends Player{
 	private double hitBox = 36;
 	private int shootRate = 10;
 
-	private NormalAttack normalAttack = new PANormalAttack();
+	private NormalAttack normalAttack;
 
 	public PA (Pane root, int maxHP, double firstPosX, double firstPosY) {
 		super(maxHP, firstPosX, firstPosY);
@@ -37,6 +37,8 @@ public class PA extends Player{
 		this.SetShootRate(this.shootRate);
 		
 		root.getChildren().add(this.charShape);//this.charShape);
+
+		this.normalAttack = new PANormalAttack();
 	}
 
 	@Override
@@ -66,9 +68,4 @@ public class PA extends Player{
 	public void CharShoot (Pane root, boolean isSpace) {
 		normalAttack.ExeuteAttack(root, isSpace);
 	}
-	
-	private void CreateNewBulllet (Pane root, Point position, Point targetPos) {
-		// this.playerBulletManager.CreateLinerBullet(root, position, targetPos, BulletOwner.PLAYER, Color.RED, true);
-	}
 }
-//this.SetPoint(this.GetPoint().GetX(), this.GetPoint().GetY() + this.GetSpeed());

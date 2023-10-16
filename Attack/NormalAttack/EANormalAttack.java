@@ -9,14 +9,14 @@ import Manager.PlayerBulletManager;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-public class PANormalAttack extends NormalAttack{
+public class EANormalAttack extends NormalAttack{
     private BulletParameters bulletType1Param = new BulletParameters();
     private BulletParameters bulletType2Param = new BulletParameters();
 
     private int bulletType1ShootDelay;
     private int bulletType2ShootDelay;
-    public PANormalAttack () {
-        this.BulletParamSetting(bulletType1Param, 5, BulletOwner.PLAYER, true, new double[10], 5, Color.RED);
+    public EANormalAttack () {
+        this.BulletParamSetting(bulletType1Param, 5, BulletOwner.PLAYER, true, new double[10], 5, Color.BLUE);
         this.BulletParamSetting(bulletType2Param, 5, BulletOwner.PLAYER, true, new double[10], 5, Color.YELLOW);
 
         bulletType1ShootDelay = 0;

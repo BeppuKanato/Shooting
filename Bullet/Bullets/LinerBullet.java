@@ -16,13 +16,12 @@ import Common.Point;
 public class LinerBullet extends Bullet {
 	private Point targetPos;
 
-	public LinerBullet (Pane root, BulletParameters bulletParams, Point firstPos) {
+	public LinerBullet (Pane root, BulletParameters bulletParams, Point firstPos, Point targetPos) {
 		super(bulletParams, firstPos);
 		this.bulletShape = new Circle(0, 0, 10);
 		this.bulletShape.setFill(this.GetBulletParams().GetColor());
 		this.targetPos = new Point();
-		targetPos.SetX(200);
-		targetPos.SetY(-120);
+		this.targetPos = targetPos;
 		root.getChildren().add(bulletShape);
 	}
 	
