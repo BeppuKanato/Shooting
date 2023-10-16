@@ -27,5 +27,5 @@ public abstract class Player extends Character{
 	}
 	
 	public abstract void CharMove (boolean isUp, boolean isDown, boolean isRight, boolean isLeft);
-	public abstract void CharShoot (Pane root, boolean isSpace, double timer);
+	public abstract void CharShoot (Pane root, boolean isSpace);
 }

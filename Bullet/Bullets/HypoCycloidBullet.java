@@ -17,8 +17,8 @@ public class HypoCycloidBullet extends Bullet {
 	private double a = 1;
     private Point targetPos;
 
-	public HypoCycloidBullet (Pane root, BulletParameters bulletParams) {
-		super(bulletParams);
+	public HypoCycloidBullet (Pane root, BulletParameters bulletParams, Point firstPos) {
+		super(bulletParams, firstPos);
 		this.bulletShape = new Circle(0, 0, 10);
 		this.bulletShape.setFill(this.GetBulletParams().GetColor());
         this.targetPos = targetPos;
@@ -36,7 +36,7 @@ public class HypoCycloidBullet extends Bullet {
         double moveX = 200 + ((bigRadius - smallRadius) * Math.cos(moveSpeed) + smallRadius * Math.cos((bigRadius - smallRadius) * moveSpeed / smallRadius));
         double moveY = 100 + ((bigRadius - smallRadius) * Math.sin(moveSpeed) - smallRadius * Math.sin((bigRadius - smallRadius) * moveSpeed / smallRadius));
 		
-		bulletParams.SetPosition(moveX, moveY);
+		this.SetBulletPos(moveX, moveY);
 	}
 
 	@Override

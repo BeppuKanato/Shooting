@@ -11,6 +11,8 @@ import javafx.scene.paint.Color;
 import javax.management.openmbean.OpenDataException;
 import javax.swing.text.Position;
 
+import Attack.NormalAttack.NormalAttack;
+import Attack.NormalAttack.PANormalAttack;
 import Bullet.Bullet;
 import Bullet.Bullet.BulletOwner;
 import Bullet.Bullets.LinerBullet;
@@ -22,6 +24,8 @@ public class PA extends Player{
 	private double speed = 3;
 	private double hitBox = 36;
 	private int shootRate = 10;
+
+	private NormalAttack normalAttack = new PANormalAttack();
 
 	public PA (Pane root, int maxHP, double firstPosX, double firstPosY) {
 		super(maxHP, firstPosX, firstPosY);
@@ -59,34 +63,12 @@ public class PA extends Player{
 	}
 	
 	@Override
-	public void CharShoot (Pane root, boolean isSpace, double timer) {
- 		if (this.GetShootDelay() > 0) {
-			this.SetShootDelay(this.GetShootDelay() - 1);
-		}
-		if (isSpace) {
-			if (this.GetShootDelay() == 0) {
-				double posX = this.GetPosition().GetX() + 16;
-				double posY = this.GetPosition().GetY() - 10;
-				
-				Point bulletPosition = new Point();
-				
-				bulletPosition.SetX(posX);
-				bulletPosition.SetY(posY);
-
-				Point targetPos = new Point();
-
-				targetPos.SetX(this.GetPosition().GetX());
-				targetPos.SetY(-10);
-				
-				CreateNewBulllet(root, bulletPosition, targetPos);
-
-				this.SetShootDelay(this.GetShootRate());
-			}
-		}
+	public void CharShoot (Pane root, boolean isSpace) {
+		normalAttack.ExeuteAttack(root, isSpace);
 	}
 	
 	private void CreateNewBulllet (Pane root, Point position, Point targetPos) {
-		this.playerBulletManager.CreateLinerBullet(root, position, targetPos, BulletOwner.PLAYER, Color.RED, true);
+		// this.playerBulletManager.CreateLinerBullet(root, position, targetPos, BulletOwner.PLAYER, Color.RED, true);
 	}
 }
 //this.SetPoint(this.GetPoint().GetX(), this.GetPoint().GetY() + this.GetSpeed());

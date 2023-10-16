@@ -17,8 +17,8 @@ public class RoseCurveBullet extends Bullet {
 
 	private Point targetPos;
 
-	public RoseCurveBullet (Pane root, BulletParameters bulletParams) {
-		super(bulletParams);
+	public RoseCurveBullet (Pane root, BulletParameters bulletParams, Point firstPosition) {
+		super(bulletParams, firstPosition);
 		this.bulletShape = new Circle(0, 0, 10);
 		this.bulletShape.setFill(bulletParams.GetColor());
 
@@ -38,7 +38,7 @@ public class RoseCurveBullet extends Bullet {
 		double moveX = 200 + n * (Math.sin(moveSpeed * a) * Math.cos(moveSpeed));
 		double moveY = 100 + n * (Math.sin(moveSpeed * a) * Math.sin(moveSpeed));
 		
-		bulletParams.SetPosition(moveX, moveY);
+		this.SetBulletPos(moveX, moveY);
 	}
 
 	@Override

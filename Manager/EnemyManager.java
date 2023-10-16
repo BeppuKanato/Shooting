@@ -51,7 +51,7 @@ public class EnemyManager {
 
     public void IsCollidingWithBullet (Bullet bullet, Pane root) {
         for (Enemy enemy : enemys) {
-            double distance = MathUtils.GetDistance(bullet.GetBulletParams().GetPosition(), enemy.GetPosition());
+            double distance = MathUtils.GetDistance(bullet.GetBulletPos(), enemy.GetPosition());
             boolean isHit = CheckCollision(distance, bullet.GetBulletParams().GetHitBox(), enemy.GetHitBox());
             if (isHit) {
                 bullet.DeleteShape(root);

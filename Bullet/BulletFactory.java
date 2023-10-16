@@ -1,5 +1,7 @@
 package Bullet;
 
+import java.nio.file.attribute.FileTime;
+
 import Bullet.Bullet.BulletOwner;
 import Bullet.Bullets.HypoCycloidBullet;
 import Bullet.Bullets.LinerBullet;
@@ -15,33 +17,33 @@ import javafx.scene.paint.Color;
 public class BulletFactory {
     private static BulletFactory instance;
 
-    public Bullet CreateLinerBullet (Pane root, BulletParameters bulletParameters)  {
-        LinerBullet bullet = new LinerBullet(root, bulletParameters);
+    public Bullet CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos)  {
+        LinerBullet bullet = new LinerBullet(root, bulletParameters, firstPos);
 
         return bullet;
     }
 
-    public Bullet CreateSpiralBullet (Pane root, BulletParameters bulletParams) {
-        SpiralBullet bullet = new SpiralBullet(root, bulletParams);
+    public Bullet CreateSpiralBullet (Pane root, BulletParameters bulletParams, Point firstPos) {
+        SpiralBullet bullet = new SpiralBullet(root, bulletParams, firstPos);
 
         return bullet;
     }
 
     
-    public Bullet CreateHypoCycloidBullet (Pane root, BulletParameters bulletParams) {
-        HypoCycloidBullet bullet = new HypoCycloidBullet(root, bulletParams);
+    public Bullet CreateHypoCycloidBullet (Pane root, BulletParameters bulletParams, Point firstPos) {
+        HypoCycloidBullet bullet = new HypoCycloidBullet(root, bulletParams, firstPos);
 
         return bullet;
     }
 
-    public Bullet CreateRoseCurveBullet (Pane root, BulletParameters bulletParams) {
-        RoseCurveBullet bullet = new RoseCurveBullet(root, bulletParams);
+    public Bullet CreateRoseCurveBullet (Pane root, BulletParameters bulletParams, Point firstPos) {
+        RoseCurveBullet bullet = new RoseCurveBullet(root, bulletParams, firstPos);
 
         return bullet;
     }
 
-    public Bullet CreateParabolaBullet (Pane root, BulletParameters bulletParams) {
-        ParabolaBullet bullet = new ParabolaBullet(root, bulletParams);
+    public Bullet CreateParabolaBullet (Pane root, BulletParameters bulletParams, Point firstPos) {
+        ParabolaBullet bullet = new ParabolaBullet(root, bulletParams, firstPos);
 
         return bullet;
     }

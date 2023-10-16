@@ -2,6 +2,7 @@
 package Manager;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -10,6 +11,7 @@ import Manager.EnemyManager;
 import Bullet.Bullet;
 import Bullet.Bullet.BulletOwner;
 import Bullet.BulletFactory;
+import Bullet.BulletParameters;
 import Common.Point;
 
 public class PlayerBulletManager {
@@ -30,7 +32,9 @@ public class PlayerBulletManager {
 
 	public void IsCollidingWithEnemy (Pane root) {
 		for (Bullet bullet : playerBullets) {
-			enemyManager.IsCollidingWithBullet(bullet, root);
+			if (bullet.GetEnable()) {
+				enemyManager.IsCollidingWithBullet(bullet, root);
+			}
 		}
 	}
 	
@@ -41,31 +45,31 @@ public class PlayerBulletManager {
 	public void CheckRemoveBullet (Pane root) {
 		for (Bullet bullet : playerBullets) {
 			bullet.BulletRemove();
-			if (!bullet.GetBulletParams().GetEnable()) {
-				RemoveBullets(bullet);
+			if (!bullet.GetEnable()) {
 				bullet.DeleteShape(root);
+				// RemoveBullets(bullet);
 			}
 		}
 	}
 
-	public void CreateLinerBullet (Pane root, Point position, Point targetPos, BulletOwner owner, Color color, boolean moveTrigger) {
-		this.AddBullets(bulletFactory.CreateLinerBullet(root, position, targetPos, owner, color, moveTrigger));
+	public void CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
+		this.AddBullets(bulletFactory.CreateLinerBullet(root, bulletParameters, firstPos));
 	}
 
-	public void CreateSpiralBullet (Pane root, Point position, Point targetPos ,BulletOwner owner, Color color, double timer, boolean moveTrigger) {
-		this.AddBullets(bulletFactory.CreateSpiralBullet(root, position, targetPos, owner, color, timer, moveTrigger));
+	public void CreateSpiralBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
+		this.AddBullets(bulletFactory.CreateSpiralBullet(root, bulletParameters, firstPos));
 	}
 
-	public void CreateHypoCycloidBullet (Pane root, Point position, Point tartPos ,BulletOwner owner, Color color, double timer, boolean moveTrigger) {
-		this.AddBullets(bulletFactory.CreateHypoCycloidBullet(root, position, tartPos, owner, color, timer, moveTrigger));
+	public void CreateHypoCycloidBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
+		this.AddBullets(bulletFactory.CreateHypoCycloidBullet(root, bulletParameters, firstPos));
 	}
 
-	public void CreateRoseCurveBullet (Pane root, Point position, Point tartPos ,BulletOwner owner, Color color, double timer, boolean moveTrigger) {
-		this.AddBullets(bulletFactory.CreateRoseCurveBullet(root, position, tartPos, owner, color, timer, moveTrigger));
+	public void CreateRoseCurveBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
+		this.AddBullets(bulletFactory.CreateRoseCurveBullet(root, bulletParameters, firstPos));
 	}
 
-	public void CreateParabolaBullet (Pane root, Point position, Point tartPos ,BulletOwner owner, Color color, double timer, boolean moveTrigger) {
-		this.AddBullets(bulletFactory.CreateParabolaBullet(root, position, tartPos, owner, color, timer, moveTrigger));
+	public void CreateParabolaBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
+		this.AddBullets(bulletFactory.CreateParabolaBullet(root, bulletParameters, firstPos));
 	}
 	
 	public void RemoveBullets (Bullet bullet) {
@@ -74,14 +78,18 @@ public class PlayerBulletManager {
 	
 	public void DrawBullets () {
 		for (Bullet bullet : playerBullets) {
-			bullet.DrawBullet();
+			if (bullet.GetEnable()) {
+				bullet.DrawBullet();
+			}
 		}
 	}
 	
 	public void BulletsMove (double timer) {
         for (Bullet bullet : playerBullets) {
-			if (bullet.GetBulletParams().GetMoveTrigger()) {
-            	bullet.BulletMove(timer);
+			if (bullet.GetEnable()) {
+				if (bullet.GetBulletParams().GetMoveTrigger()) {
+					bullet.BulletMove(timer);
+				}
 			}
         }
 	}

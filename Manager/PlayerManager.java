@@ -4,6 +4,7 @@ package Manager;
 
 // import application.Character.Player;
 import Character.Player;
+import Common.Point;
 import javafx.scene.layout.Pane;
 
 public class PlayerManager {
@@ -30,11 +31,15 @@ public class PlayerManager {
 		this.player.CharMove(isUp, isDown, isRight, isLeft);
 	}
 	
-	public void PlayerShoot (Pane root, boolean isSpace, double timer) {
-		this.player.CharShoot(root, isSpace, timer);
+	public void PlayerShoot (Pane root, boolean isSpace) {
+		this.player.CharShoot(root, isSpace);
 	} 
 	
 	public void SetPlayer (Player player) {
 		this.player = player;
+	}
+
+	public Point GetPlayerPos () {
+		return this.player.GetPosition();
 	}
 }

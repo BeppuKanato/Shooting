@@ -18,12 +18,17 @@ public abstract class Bullet {
 		PLAYER,
 		ENEMY
 	}
-
+	
+	private Point bulletPos = new Point();
+	private boolean enable;
 	private BulletParameters bulletParams;
 	protected Shape bulletShape;
 	
-	public Bullet (BulletParameters bulletParams) {
+	public Bullet (BulletParameters bulletParams, Point firstPos) {
 		this.bulletParams = bulletParams;
+		bulletPos.SetX(firstPos.GetX());
+		bulletPos.SetY(firstPos.GetY());
+		this.enable = true;
 		if (this.bulletParams.GetOwner() == BulletOwner.PLAYER) {
 			playerBulletManager.AddBullets(this);
 		}
@@ -32,13 +37,30 @@ public abstract class Bullet {
 		}
 	}
 
+	public Point GetBulletPos () {
+		return this.bulletPos;
+	}
+
+	public void SetBulletPos (double x, double y) {
+		this.bulletPos.SetX(x);
+		this.bulletPos.SetY(y);
+	}
+
+	public boolean GetEnable () {
+		return this.enable;
+	}
+
+	public void SetEnable (boolean enable) {
+		this.enable = enable;
+	}
+
 	public BulletParameters GetBulletParams () {
 		return this.bulletParams;
 	}
 	
 	public void DrawBullet () {
-		this.bulletShape.setTranslateX(this.bulletParams.GetPosition().GetX());
-		this.bulletShape.setTranslateY(this.bulletParams.GetPosition().GetY());
+		this.bulletShape.setTranslateX(this.bulletPos.GetX());
+		this.bulletShape.setTranslateY(this.bulletPos.GetY());
 	}
 	
 	public abstract void BulletMove (double timer);

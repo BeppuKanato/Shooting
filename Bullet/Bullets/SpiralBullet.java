@@ -22,8 +22,8 @@ public class SpiralBullet extends Bullet {
 	private double a = 1;
 	private Point targetPos;
 
-	public SpiralBullet (Pane root, BulletParameters bulletParams) {
-		super(bulletParams);
+	public SpiralBullet (Pane root, BulletParameters bulletParams, Point firstPos) {
+		super(bulletParams, firstPos);
 		this.bulletShape = new Circle(0, 0, 10);
 		this.bulletShape.setFill(bulletParams.GetColor());
 
@@ -39,7 +39,7 @@ public class SpiralBullet extends Bullet {
 		double moveX = 200 + (a * moveSpeed * Math.cos(timer));
 		double moveY = 100 + (a * moveSpeed * Math.sin(timer));
 		
-		bulletParams.SetPosition(moveX, moveY);
+		this.SetBulletPos(moveX, moveY);
 	}
 
 	@Override

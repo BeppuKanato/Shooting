@@ -8,10 +8,7 @@ import javafx.scene.shape.Shape;
 public class BulletParameters {
 	
 	private double speed;
-	private Point position = new Point();
 	private BulletOwner owner;
-	private boolean enable;
-    private Point targetPos = new Point();
     private double[] shapeSizes;
     private double hitBox;
 	private Color color;
@@ -24,15 +21,6 @@ public class BulletParameters {
 
 	public void SetMoveTrigger (boolean moveTrigger) {
 		this.moveTrigger = moveTrigger;
-	}
-
-	public Point GetPosition () {
-		return this.position;
-	}
-
-	public void SetPosition (double x, double y) {
-		this.position.SetX(x);
-		this.position.SetY(y);
 	}
 	
 	public BulletOwner GetOwner () {
@@ -49,14 +37,6 @@ public class BulletParameters {
 
 	public void SetSpeed (double speed) {
 		this.speed = speed;
-	}
-
-	public boolean GetEnable () {
-		return this.enable;
-	}
-
-	public void SetEnable (boolean enable) {
-		this.enable = enable;
 	}
 
     public double[] GetShapeSizes () {

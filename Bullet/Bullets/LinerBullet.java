@@ -16,31 +16,33 @@ import Common.Point;
 public class LinerBullet extends Bullet {
 	private Point targetPos;
 
-	public LinerBullet (Pane root, BulletParameters bulletParams) {
-		super(bulletParams);
+	public LinerBullet (Pane root, BulletParameters bulletParams, Point firstPos) {
+		super(bulletParams, firstPos);
 		this.bulletShape = new Circle(0, 0, 10);
 		this.bulletShape.setFill(this.GetBulletParams().GetColor());
-		this.targetPos = targetPos;
+		this.targetPos = new Point();
+		targetPos.SetX(200);
+		targetPos.SetY(-120);
 		root.getChildren().add(bulletShape);
 	}
 	
 	@Override
 	public void BulletMove (double timer) {
 		BulletParameters bulletParam = this.GetBulletParams();
-		double direction = MathUtils.GetDirection(bulletParam.GetPosition(), targetPos);
+		double direction = MathUtils.GetDirection(this.GetBulletPos(), targetPos);
 
-		double moveX = bulletParam.GetPosition().GetX() + bulletParam.GetSpeed() * Math.cos(direction);
-		double moveY = bulletParam.GetPosition().GetY() + bulletParam.GetSpeed() * Math.sin(direction);
+		double moveX = this.GetBulletPos().GetX() + bulletParam.GetSpeed() * Math.cos(direction);
+		double moveY = this.GetBulletPos().GetY() + bulletParam.GetSpeed() * Math.sin(direction);
 		
-		bulletParam.SetPosition(moveX, moveY);
+		this.SetBulletPos(moveX, moveY);
 	}
 
 	@Override
 	public void BulletRemove () {
 		BulletParameters bulletParam = this.GetBulletParams();
-		double distance = MathUtils.GetDistance(bulletParam.GetPosition(), targetPos);
+		double distance = MathUtils.GetDistance(this.GetBulletPos(), targetPos);
 		if (distance <= 10) {
-			bulletParam.SetEnable(false);
+			this.SetEnable(false);
 		}
 	}
 }

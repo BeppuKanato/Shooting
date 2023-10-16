@@ -17,8 +17,8 @@ public class ParabolaBullet extends Bullet {
 
 	private Point targetPos;
 
-	public ParabolaBullet (Pane root, BulletParameters bulletParams) {
-		super(bulletParams);
+	public ParabolaBullet (Pane root, BulletParameters bulletParams, Point firstPos) {
+		super(bulletParams, firstPos);
 		this.bulletShape = new Circle(0, 0, 10);
 		this.bulletShape.setFill(bulletParams.GetColor());
 
@@ -37,7 +37,7 @@ public class ParabolaBullet extends Bullet {
 		
 		double moveY = Math.sqrt(squaredmoveY);
 
-		bulletParams.SetPosition(moveX + 200, moveY + 100);
+		this.SetBulletPos(moveX + 200, moveY + 100);
 	}
 
 	@Override
