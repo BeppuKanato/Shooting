@@ -10,15 +10,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class PANormalAttack extends NormalAttack{
-    private BulletParameters bulletType1Param = new BulletParameters();
-    private BulletParameters bulletType2Param = new BulletParameters();
+    private BulletParameters bulletType1Param = new BulletParameters(5, BulletOwner.PLAYER, new double[10], 5, Color.RED, 150, true);
+    private BulletParameters bulletType2Param = new BulletParameters(5, BulletOwner.PLAYER, new double[10], 5, Color.YELLOW, 150, true);
+    private BulletParameters bulletType3Param = new BulletParameters(5, BulletOwner.PLAYER, new double[10], 5, Color.YELLOW, 150, false);
 
     private int bulletType1ShootDelay;
     private int bulletType2ShootDelay;
     public PANormalAttack () {
-        this.BulletParamSetting(bulletType1Param, 5, BulletOwner.PLAYER, true, new double[10], 5, Color.RED);
-        this.BulletParamSetting(bulletType2Param, 5, BulletOwner.PLAYER, true, new double[10], 5, Color.YELLOW);
-
         bulletType1ShootDelay = 0;
         bulletType2ShootDelay = 0;
     }
@@ -82,6 +80,29 @@ public class PANormalAttack extends NormalAttack{
 
                 this.bulletType2ShootDelay = shootRate;
             }
+        }
+    }
+
+    private void BulletType3 (Pane root,boolean isSpace) {
+        int shootRate = 10;
+        if (isSpace) {
+            Point playerPos = this.playerManager.GetPlayerPos();
+            double posX = playerPos.GetX() - 10;
+            double posY = playerPos.GetY() - 10;
+            
+            Point firstBulletPos = new Point();
+            
+            firstBulletPos.SetX(posX);
+            firstBulletPos.SetY(posY);
+
+            Point targetPos = new Point();
+
+            targetPos.SetX(posX);
+            targetPos.SetY(-10);
+
+            this.playerBulletManager.CreateLinerBullet(root, bulletType2Param, firstBulletPos, targetPos);
+
+            this.bulletType2ShootDelay = shootRate;
         }
     }
 }

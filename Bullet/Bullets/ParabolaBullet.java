@@ -26,6 +26,7 @@ public class ParabolaBullet extends Bullet {
 		root.getChildren().add(bulletShape);
 	}
 	
+	
 	@Override
 	public void BulletMove (double timer) {
 		BulletParameters bulletParams = this.GetBulletParams();

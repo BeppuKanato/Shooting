@@ -29,18 +29,19 @@ public class LinerBullet extends Bullet {
 	public void BulletMove (double timer) {
 		BulletParameters bulletParam = this.GetBulletParams();
 		double direction = MathUtils.GetDirection(this.GetBulletPos(), targetPos);
-
 		double moveX = this.GetBulletPos().GetX() + bulletParam.GetSpeed() * Math.cos(direction);
 		double moveY = this.GetBulletPos().GetY() + bulletParam.GetSpeed() * Math.sin(direction);
 		
 		this.SetBulletPos(moveX, moveY);
+
+		this.SetLifeTime(this.GetLifeTime() - 1);
 	}
 
 	@Override
 	public void BulletRemove () {
-		BulletParameters bulletParam = this.GetBulletParams();
-		double distance = MathUtils.GetDistance(this.GetBulletPos(), targetPos);
-		if (distance <= 10) {
+		// BulletParameters bulletParam = this.GetBulletParams();
+		// double distance = MathUtils.GetDistance(this.GetBulletPos(), targetPos);
+		if (this.GetLifeTime() < 0 ) {
 			this.SetEnable(false);
 		}
 	}

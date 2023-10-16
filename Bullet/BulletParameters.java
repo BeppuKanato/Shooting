@@ -12,8 +12,19 @@ public class BulletParameters {
     private double[] shapeSizes;
     private double hitBox;
 	private Color color;
+	private int lifeTime;
 
 	private boolean moveTrigger;
+
+	public BulletParameters (double speed, BulletOwner owner, double[] shapeSizes, double hitBox, Color color, int lifeTime, boolean moveTrigger) {
+		this.speed = speed;
+		this.owner = owner;
+		this.shapeSizes = shapeSizes;
+		this.hitBox = hitBox;
+		this.color = color;
+		this.lifeTime = lifeTime;
+		this.moveTrigger = moveTrigger;
+	}
 
     public boolean GetMoveTrigger () {
 		return this.moveTrigger;
@@ -61,5 +72,9 @@ public class BulletParameters {
 
 	public void SetColor (Color color) {
 		this.color = color;
+	}
+
+	public int GetLifeTime () {
+		return this.lifeTime;
 	}
 }

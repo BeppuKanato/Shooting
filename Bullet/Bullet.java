@@ -21,6 +21,7 @@ public abstract class Bullet {
 	
 	private Point bulletPos = new Point();
 	private boolean enable;
+	private int lifeTime;
 	private BulletParameters bulletParams;
 	protected Shape bulletShape;
 	
@@ -29,6 +30,7 @@ public abstract class Bullet {
 		bulletPos.SetX(firstPos.GetX());
 		bulletPos.SetY(firstPos.GetY());
 		this.enable = true;
+		this.lifeTime = this.bulletParams.GetLifeTime();
 		if (this.bulletParams.GetOwner() == BulletOwner.PLAYER) {
 			playerBulletManager.AddBullets(this);
 		}
@@ -52,6 +54,14 @@ public abstract class Bullet {
 
 	public void SetEnable (boolean enable) {
 		this.enable = enable;
+	}
+
+	public int GetLifeTime () {
+		return this.lifeTime;
+	}
+
+	public void SetLifeTime (int lifeTime) {
+		this.lifeTime = lifeTime;
 	}
 
 	public BulletParameters GetBulletParams () {

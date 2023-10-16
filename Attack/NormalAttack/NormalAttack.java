@@ -18,13 +18,4 @@ public abstract class NormalAttack {
     protected double moveBaseTimer = 0;
 
     public abstract void ExeuteAttack(Pane root, boolean isSpace);
-
-    public void BulletParamSetting (BulletParameters bulletParameters, double speed, BulletOwner owner, boolean moveTrigger, double[] shapeSize, double hitBox, Color color) {
-        bulletParameters.SetSpeed(speed);
-        bulletParameters.SetOwner(owner);
-        bulletParameters.SetMoveTrigger(moveTrigger);
-        bulletParameters.SetShapeSize(shapeSize);
-        bulletParameters.SetHitBox(hitBox);
-        bulletParameters.SetColor(color);
-    }
 }

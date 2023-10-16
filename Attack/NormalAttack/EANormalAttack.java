@@ -10,15 +10,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class EANormalAttack extends NormalAttack{
-    private BulletParameters bulletType1Param = new BulletParameters();
-    private BulletParameters bulletType2Param = new BulletParameters();
+    private BulletParameters bulletType1Param = new BulletParameters(5, BulletOwner.PLAYER, new double[10], 5, Color.RED, 5, true);
+    private BulletParameters bulletType2Param = new BulletParameters(5, BulletOwner.PLAYER, new double[10], 5, Color.RED, 5, true);
 
     private int bulletType1ShootDelay;
     private int bulletType2ShootDelay;
     public EANormalAttack () {
-        this.BulletParamSetting(bulletType1Param, 5, BulletOwner.PLAYER, true, new double[10], 5, Color.BLUE);
-        this.BulletParamSetting(bulletType2Param, 5, BulletOwner.PLAYER, true, new double[10], 5, Color.YELLOW);
-
         bulletType1ShootDelay = 0;
         bulletType2ShootDelay = 0;
     }

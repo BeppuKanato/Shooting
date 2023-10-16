@@ -14,6 +14,17 @@ public class MathUtils {
         return rtn;
     }
 
+    public static Point ClacQuadratic (int a, int b, int c, int x) {
+        double moveY = a * Math.pow(x, 2) + b * x + c;
+
+        Point rtn = new Point();
+
+        rtn.SetX(x + 200);
+        rtn.SetY(moveY + 100);
+
+        return rtn;
+    }
+
     public static Point CalcRoseCurve (double timer, int n, int m, int d) {
         double a = (double)m / d;
 
