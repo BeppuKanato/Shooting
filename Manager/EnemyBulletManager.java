@@ -21,6 +21,7 @@ public class EnemyBulletManager {
 	private List<Bullet> enemyBullets = new ArrayList<Bullet>();
 	private BulletFactory bulletFactory = new BulletFactory();
 	
+	private double moveBaseTimer = 0;
 	private EnemyBulletManager () {
 
 	}
@@ -79,12 +80,17 @@ public class EnemyBulletManager {
 	}
 	
 	public void BulletsMove (double timer) {
+		boolean moved = false;
 		for (Bullet bullet : enemyBullets) {
 			if (bullet.GetEnable()) {
 				if (bullet.GetBulletParams().GetMoveTrigger()) {
-					bullet.BulletMove(timer);
+					bullet.BulletMove(moveBaseTimer);
+					moved = true;
 				}
 			}
+		}
+		if (moved) {
+			moveBaseTimer += 0.05;
 		}
 	}
 }

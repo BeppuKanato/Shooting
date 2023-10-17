@@ -31,7 +31,7 @@ public class RoseCurveBullet extends Bullet {
 		BulletParameters bulletParams = this.GetBulletParams();
 
 		double a = (double)1 / 3;
-		int n = 150;
+		int n = 200;
 
 		double moveSpeed = timer * bulletParams.GetSpeed();
 

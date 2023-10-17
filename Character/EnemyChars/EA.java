@@ -43,6 +43,6 @@ public class EA extends Enemy{
 
     @Override
     public void CharShoot(Pane root, double timer) {
-        this.normalAttack.ExeuteAttack(root, true);
+        this.normalAttack.ExeuteAttack(root, true, this);
 	}
 }

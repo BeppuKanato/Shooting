@@ -33,8 +33,8 @@ public class HypoCycloidBullet extends Bullet {
         double bigRadius = smallRadius * 4;
         double moveSpeed = timer * bulletParams.GetSpeed();
 
-        double moveX = 200 + ((bigRadius - smallRadius) * Math.cos(moveSpeed) + smallRadius * Math.cos((bigRadius - smallRadius) * moveSpeed / smallRadius));
-        double moveY = 100 + ((bigRadius - smallRadius) * Math.sin(moveSpeed) - smallRadius * Math.sin((bigRadius - smallRadius) * moveSpeed / smallRadius));
+        double moveX = (bigRadius - smallRadius) * Math.cos(moveSpeed) + smallRadius * Math.cos((bigRadius - smallRadius) * moveSpeed / smallRadius);
+        double moveY = (bigRadius - smallRadius) * Math.sin(moveSpeed) - smallRadius * Math.sin((bigRadius - smallRadius) * moveSpeed / smallRadius);
 		
 		this.SetBulletPos(moveX, moveY);
 	}

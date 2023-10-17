@@ -4,6 +4,7 @@ import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 
 import Bullet.BulletParameters;
 import Bullet.Bullet.BulletOwner;
+import Character.Character;
 import Common.Point;
 import Manager.EnemyBulletManager;
 import Manager.EnemyManager;
@@ -17,7 +18,7 @@ public abstract class NormalAttack {
     protected EnemyBulletManager enemyBulletManager = EnemyBulletManager.GetInstance();
     protected PlayerManager playerManager = PlayerManager.GetInstance();
     protected EnemyManager enemyManager = EnemyManager.GetInstance();
-    public abstract void ExeuteAttack(Pane root, boolean isSpace);
+    public abstract void ExeuteAttack(Pane root, boolean isSpace, Character attackChar);
 
     protected double addTimer = 0.15;
     protected double moveBaseTimer;

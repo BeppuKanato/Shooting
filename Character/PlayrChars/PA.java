@@ -66,6 +66,6 @@ public class PA extends Player{
 	
 	@Override
 	public void CharShoot (Pane root, boolean isSpace) {
-		normalAttack.ExeuteAttack(root, isSpace);
+		normalAttack.ExeuteAttack(root, isSpace, this);
 	}
 }

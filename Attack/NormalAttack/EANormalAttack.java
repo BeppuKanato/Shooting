@@ -2,10 +2,24 @@ package Attack.NormalAttack;
 
 import java.beans.BeanProperty;
 
+import Attack.AttackType;
+import Attack.AttackTypes.HypoAttack_3;
+import Attack.AttackTypes.HypoAttack_4;
+import Attack.AttackTypes.HypoAttack_5;
+import Attack.AttackTypes.RoseAttack2_1;
+import Attack.AttackTypes.RoseAttack3_1;
+import Attack.AttackTypes.RoseAttack3_2;
+import Attack.AttackTypes.RoseAttack4_1;
+import Attack.AttackTypes.RoseAttack4_3;
+import Attack.AttackTypes.RoseAttack5_1;
+import Attack.AttackTypes.RoseAttack5_3;
+import Attack.AttackTypes.SpiralAttack;
 import Bullet.BulletParameters;
 import Bullet.Bullet.BulletOwner;
+import Character.Character;
 import Common.Point;
 import Manager.PlayerBulletManager;
+import javafx.scene.control.skin.ColorPickerSkin;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import Common.MathUtils;
@@ -19,14 +33,18 @@ public class EANormalAttack extends NormalAttack{
 
     private int bulletType2Counter;
 
+    private AttackType attack;
+
     public EANormalAttack () {
         bulletType1ShootDelay = 0;
         bulletType2ShootDelay = 0;
         bulletType2Counter = this.GetPeriod();
+        attack = new SpiralAttack(5, BulletOwner.ENEMY, Color.BLUE, false);
     }
     @Override
-    public void ExeuteAttack(Pane root, boolean isSpace) {
-        BulletType2(root);
+    public void ExeuteAttack(Pane root, boolean isSpace, Character attackChar) {
+        // BulletType2(root);
+        attack.Attack(root, attackChar);
     }
 
     private void BulletType1 (Pane root,boolean isSpace) {

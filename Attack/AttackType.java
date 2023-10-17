@@ -1,6 +1,8 @@
 package Attack;
 
 import Bullet.BulletParameters;
+import Character.Character;
+import Common.Point;
 import Manager.EnemyBulletManager;
 import Manager.EnemyManager;
 import Manager.PlayerBulletManager;
@@ -17,5 +19,5 @@ public abstract class AttackType {
     protected int attackDelay;
     protected int attackRate;
 
-    public abstract void Attack(Pane root);
+    public abstract void Attack(Pane root, Character attackChar);
 }

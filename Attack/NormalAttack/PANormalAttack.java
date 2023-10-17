@@ -3,9 +3,10 @@ package Attack.NormalAttack;
 import java.beans.BeanProperty;
 
 import Attack.AttackType;
-import Attack.NormalAttack.AttackTypes.LinerAttack;
+import Attack.AttackTypes.LinerAttack;
 import Bullet.BulletParameters;
 import Bullet.Bullet.BulletOwner;
+import Character.Character;
 import Common.MathUtils;
 import Common.Point;
 import Manager.PlayerBulletManager;
@@ -35,13 +36,13 @@ public class PANormalAttack extends NormalAttack{
         attack = new LinerAttack(5, BulletOwner.PLAYER, Color.RED, true);
     }
     @Override
-    public void ExeuteAttack(Pane root, boolean isSpace) {
+    public void ExeuteAttack(Pane root, boolean isSpace, Character attackChar) {
         if (isSpace) {
             // BulletType1(root, isSpace);
             // BulletType2(root, isSpace);
             // BulletType3(root, isSpace);
             // BulletType4(root);
-            attack.Attack(root);
+            attack.Attack(root, attackChar);
         }
     }
 

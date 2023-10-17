@@ -19,8 +19,8 @@ public class MathUtils {
 
         Point rtn = new Point();
 
-        rtn.SetX(x + 200);
-        rtn.SetY(moveY + 100);
+        rtn.SetX(x);
+        rtn.SetY(moveY);
 
         return rtn;
     }
@@ -28,8 +28,8 @@ public class MathUtils {
     public static Point CalcRoseCurve (double timer, int n, int m, int d) {
         double a = (double)m / d;
 
-		double moveX = 200 + n * (Math.sin(timer * a) * Math.cos(timer));
-		double moveY = 100 + n * (Math.sin(timer * a) * Math.sin(timer));
+		double moveX = n * (Math.sin(timer * a) * Math.cos(timer));
+		double moveY = n * (Math.sin(timer * a) * Math.sin(timer));
 
         Point rtn = new Point();
 
@@ -41,10 +41,9 @@ public class MathUtils {
 
     public static Point CalcHypoCycloid (double timer, double smallRadius, int vertexNumber) {
         double bigRadius = smallRadius * vertexNumber;
-        double moveSpeed = timer;
 
-        double moveX = 200 + ((bigRadius - smallRadius) * Math.cos(moveSpeed) + smallRadius * Math.cos((bigRadius - smallRadius) * moveSpeed / smallRadius));
-        double moveY = 100 + ((bigRadius - smallRadius) * Math.sin(moveSpeed) - smallRadius * Math.sin((bigRadius - smallRadius) * moveSpeed / smallRadius));
+        double moveX = (bigRadius - smallRadius) * Math.cos(timer) + smallRadius * Math.cos((bigRadius - smallRadius) * timer / smallRadius);
+        double moveY = (bigRadius - smallRadius) * Math.sin(timer) - smallRadius * Math.sin((bigRadius - smallRadius) * timer / smallRadius);
 
         Point rtn = new Point();
 
@@ -55,8 +54,8 @@ public class MathUtils {
     }
 
     public static Point CalcSpiral (double timer, int a) {
-		double moveX = 200 + (a * timer * Math.cos(timer));
-		double moveY = 100 + (a * timer * Math.sin(timer));
+		double moveX = a * timer * Math.cos(timer);
+		double moveY = a * timer * Math.sin(timer);
 
         Point rtn = new Point();
 

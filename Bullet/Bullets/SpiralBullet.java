@@ -21,6 +21,7 @@ public class SpiralBullet extends Bullet {
 	
 	private double a = 1;
 	private Point targetPos;
+	private double moveBaseTimer = 0;
 
 	public SpiralBullet (Pane root, BulletParameters bulletParams, Point firstPos) {
 		super(bulletParams, firstPos);
@@ -34,10 +35,13 @@ public class SpiralBullet extends Bullet {
 	@Override
 	public void BulletMove (double timer) {
 		BulletParameters bulletParams = this.GetBulletParams();
+		// double moveSpeed = timer * bulletParams.GetSpeed();
+		Point move = MathUtils.CalcSpiral(timer, 15);
+		// double moveX = 200 + (a * timer * Math.cos(timer));
+		// double moveY = 100 + (a * timer * Math.sin(timer));
 
-		double moveSpeed = timer * bulletParams.GetSpeed();
-		double moveX = 200 + (a * moveSpeed * Math.cos(timer));
-		double moveY = 100 + (a * moveSpeed * Math.sin(timer));
+		double moveX = 200 + move.GetX();
+		double moveY = 100 + move.GetY();
 		
 		this.SetBulletPos(moveX, moveY);
 	}
