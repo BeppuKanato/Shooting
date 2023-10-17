@@ -1,5 +1,7 @@
 package Attack.NormalAttack;
 
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
+
 import Bullet.BulletParameters;
 import Bullet.Bullet.BulletOwner;
 import Common.Point;
@@ -15,7 +17,13 @@ public abstract class NormalAttack {
     protected EnemyBulletManager enemyBulletManager = EnemyBulletManager.GetInstance();
     protected PlayerManager playerManager = PlayerManager.GetInstance();
     protected EnemyManager enemyManager = EnemyManager.GetInstance();
-    protected double moveBaseTimer = 0;
-
     public abstract void ExeuteAttack(Pane root, boolean isSpace);
+
+    protected double addTimer = 0.15;
+    protected double moveBaseTimer;
+    private int period = (int)(2 * Math.PI / this.addTimer);
+
+    public int GetPeriod () {
+        return this.period;
+    }
 }

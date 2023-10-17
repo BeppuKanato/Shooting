@@ -53,23 +53,23 @@ public class PlayerBulletManager {
 	}
 
 	public void CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos, Point targetPos) {
-		this.AddBullets(bulletFactory.CreateLinerBullet(root, bulletParameters, firstPos, targetPos));
+		bulletFactory.CreateLinerBullet(root, bulletParameters, firstPos, targetPos);
 	}
 
 	public void CreateSpiralBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
-		this.AddBullets(bulletFactory.CreateSpiralBullet(root, bulletParameters, firstPos));
+		bulletFactory.CreateSpiralBullet(root, bulletParameters, firstPos);
 	}
 
 	public void CreateHypoCycloidBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
-		this.AddBullets(bulletFactory.CreateHypoCycloidBullet(root, bulletParameters, firstPos));
+		bulletFactory.CreateHypoCycloidBullet(root, bulletParameters, firstPos);
 	}
 
 	public void CreateRoseCurveBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
-		this.AddBullets(bulletFactory.CreateRoseCurveBullet(root, bulletParameters, firstPos));
+		bulletFactory.CreateRoseCurveBullet(root, bulletParameters, firstPos);
 	}
 
 	public void CreateParabolaBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
-		this.AddBullets(bulletFactory.CreateParabolaBullet(root, bulletParameters, firstPos));
+		bulletFactory.CreateParabolaBullet(root, bulletParameters, firstPos);
 	}
 	
 	public void RemoveBullets (Bullet bullet) {
