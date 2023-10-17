@@ -2,6 +2,8 @@ package Attack.NormalAttack;
 
 import java.beans.BeanProperty;
 
+import Attack.AttackType;
+import Attack.NormalAttack.AttackTypes.LinerAttack;
 import Bullet.BulletParameters;
 import Bullet.Bullet.BulletOwner;
 import Common.MathUtils;
@@ -20,6 +22,8 @@ public class PANormalAttack extends NormalAttack{
     private int bulletType2ShootDelay;
     private int bulletType3ShootDelay;
 
+    private AttackType attack;
+
     private int period;
 
     public PANormalAttack () {
@@ -28,14 +32,16 @@ public class PANormalAttack extends NormalAttack{
         bulletType3ShootDelay = 0;
         period = (int)(2 * Math.PI / this.addTimer);
         moveBaseTimer = 0;
+        attack = new LinerAttack(5, BulletOwner.PLAYER, Color.RED, true);
     }
     @Override
     public void ExeuteAttack(Pane root, boolean isSpace) {
         if (isSpace) {
-            BulletType1(root, isSpace);
-            BulletType2(root, isSpace);
+            // BulletType1(root, isSpace);
+            // BulletType2(root, isSpace);
             // BulletType3(root, isSpace);
             // BulletType4(root);
+            attack.Attack(root);
         }
     }
 
