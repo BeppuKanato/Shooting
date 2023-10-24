@@ -16,19 +16,14 @@ import Common.MathUtils;
 import Common.Point;
 
 public class SpiralBullet extends Bullet {
-	private double bulletSpeed = 1;
-	private double hitBox = 5;
-	
-	private double a = 1;
 	private Point targetPos;
-	private double moveBaseTimer = 0;
 
 	public SpiralBullet (Pane root, BulletParameters bulletParams, Point firstPos) {
 		super(bulletParams, firstPos);
 		this.bulletShape = new Circle(0, 0, 10);
 		this.bulletShape.setFill(bulletParams.GetColor());
 
-		this.targetPos = targetPos;
+		this.firstPos = firstPos;
 		root.getChildren().add(bulletShape);
 	}
 	
@@ -40,8 +35,8 @@ public class SpiralBullet extends Bullet {
 		// double moveX = 200 + (a * timer * Math.cos(timer));
 		// double moveY = 100 + (a * timer * Math.sin(timer));
 
-		double moveX = 200 + move.GetX();
-		double moveY = 100 + move.GetY();
+		double moveX = firstPos.GetX() + move.GetX();
+		double moveY = firstPos.GetY() + move.GetY();
 		
 		this.SetBulletPos(moveX, moveY);
 	}

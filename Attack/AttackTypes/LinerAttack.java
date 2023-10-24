@@ -15,7 +15,7 @@ import javafx.scene.paint.Color;
 public class LinerAttack extends AttackType{
 
     public LinerAttack(double speed, BulletOwner owner, Color color, boolean  moveTrigger) {
-        this.attackRate = 10;
+        this.attackRate = 50;
         this.attackDelay = 0;
         this.bulletParam = new BulletParameters(speed, owner, new double[10], 5, color, 150, moveTrigger);
     }
@@ -42,7 +42,7 @@ public class LinerAttack extends AttackType{
             targetPos.SetX(posX);
             targetPos.SetY(-10);
 
-            this.playerBulletManager.CreateLinerBullet(root, bulletParam, firstPos, targetPos);
+            // this.playerBulletManager.CreateLinerBullet(root, bulletParam, firstPos, targetPos);
 
             this.attackDelay = attackRate;
             

@@ -45,7 +45,6 @@ public class GameLoop extends AnimationTimer{
 		if (now - lastUpdateTime >= INTERVAL) {
 
 			long currentTime = System.currentTimeMillis();
-			long elapsedTime = currentTime -startTime;
 			moveBaseTimer += 0.1;
 
 			this.gameScreen.DrawGameScreen();

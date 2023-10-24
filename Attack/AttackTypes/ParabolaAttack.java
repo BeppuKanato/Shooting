@@ -12,18 +12,18 @@ import Manager.PlayerBulletManager;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-public class RoseAttack3_1 extends AttackType{
+public class ParabolaAttack extends AttackType{
 
-    private double moveBaseTimer = 0;
-    private double addTimer = 0.14;
+    private double moveBaseTimer = -20;
+    private double addTimer = 0.1;
     private int period;
 
-    public RoseAttack3_1(double speed, BulletOwner owner, Color color, boolean  moveTrigger) {
+    public ParabolaAttack(double speed, BulletOwner owner, Color color, boolean  moveTrigger) {
         this.attackRate = 170;
         this.attackDelay = 0;
         this.bulletParam = new BulletParameters(speed, owner, new double[10], 5, color, 150, moveTrigger);
 
-        this.period = (int)(2 * Math.PI / addTimer);
+        this.period = (int)(2 * Math.PI / addTimer) * 10;
     }
 
     @Override
@@ -35,7 +35,8 @@ public class RoseAttack3_1 extends AttackType{
             bulletParam.SetMoveTrigger(false);
             if (period > 0) {
                 Point target = new Point();
-                Point firstPos = MathUtils.CalcRoseCurve(moveBaseTimer, 150, 3, 1);
+                // Point firstPos = MathUtils.CalcRoseCurve(moveBaseTimer, 150, 2, 1);
+                Point firstPos = MathUtils.ClacQuadratic(-1, 1, 300, moveBaseTimer);
                 firstPos.SetX(firstPos.GetX() + 200);
                 firstPos.SetY(firstPos.GetY() + 100);
                 if (firstPos.GetX() < 200) {
@@ -51,7 +52,7 @@ public class RoseAttack3_1 extends AttackType{
             }
             else {
                 bulletParam.SetMoveTrigger(true);
-                period = (int)(2 * Math.PI / addTimer);
+                period = (int)(2 * Math.PI / addTimer) * 10;
                 attackDelay = attackRate;
             }
         }

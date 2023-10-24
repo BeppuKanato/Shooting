@@ -21,15 +21,20 @@ public abstract class Bullet {
 	
 	private Point bulletPos = new Point();
 	private boolean enable;
+	private boolean moveTrigger;
 	private int lifeTime;
 	private BulletParameters bulletParams;
+
 	protected Shape bulletShape;
+	protected Point firstPos;
 	
 	public Bullet (BulletParameters bulletParams, Point firstPos) {
 		this.bulletParams = bulletParams;
 		bulletPos.SetX(firstPos.GetX());
 		bulletPos.SetY(firstPos.GetY());
+		this.firstPos = firstPos; 
 		this.enable = true;
+		this.moveTrigger = bulletParams.GetMoveTrigger();
 		this.lifeTime = this.bulletParams.GetLifeTime();
 		if (this.bulletParams.GetOwner() == BulletOwner.PLAYER) {
 			playerBulletManager.AddBullets(this);
@@ -37,6 +42,14 @@ public abstract class Bullet {
 		else if (this.bulletParams.GetOwner() == BulletOwner.ENEMY) {
 			enemyBulletsManager.AddBullets(this);
 		}
+	}
+
+	public boolean GetMoveTrigger () {
+		return this.moveTrigger;
+	}
+
+	public void SetMoveTrigger (boolean moveTrigger) {
+		this.moveTrigger = moveTrigger;
 	}
 
 	public Point GetBulletPos () {

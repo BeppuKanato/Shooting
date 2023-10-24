@@ -47,8 +47,10 @@ public class EnemyBulletManager {
 		}
 	}
 
-	public void CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos, Point targetPos) {
-		bulletFactory.CreateLinerBullet(root, bulletParameters, firstPos, targetPos);
+	public Bullet CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos, double direction) {
+		Bullet rtn = bulletFactory.CreateLinerBullet(root, bulletParameters, firstPos, direction);
+
+		return rtn;
 	}
 
 	public void CreateSpiralBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
@@ -66,6 +68,11 @@ public class EnemyBulletManager {
 	public void CreateParabolaBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
 		bulletFactory.CreateParabolaBullet(root, bulletParameters, firstPos);
 	}
+
+	public void CreateDialogBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
+		bulletFactory.CreateDialogBullet(root, bulletParameters, firstPos);
+	}
+	
 	
 	public void RemoveBullets (Bullet bullet) {
 		enemyBullets.remove(bullet);
@@ -83,7 +90,7 @@ public class EnemyBulletManager {
 		boolean moved = false;
 		for (Bullet bullet : enemyBullets) {
 			if (bullet.GetEnable()) {
-				if (bullet.GetBulletParams().GetMoveTrigger()) {
+				if (bullet.GetMoveTrigger()) {
 					bullet.BulletMove(moveBaseTimer);
 					moved = true;
 				}

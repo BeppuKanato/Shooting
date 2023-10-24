@@ -34,19 +34,18 @@ public class RoseAttack4_1 extends AttackType{
         if (attackDelay <= 0) {
             bulletParam.SetMoveTrigger(false);
             if (period > 0) {
-                Point target = new Point();
                 Point firstPos = MathUtils.CalcRoseCurve(moveBaseTimer, 150, 4, 1);
                 firstPos.SetX(firstPos.GetX() + 200);
                 firstPos.SetY(firstPos.GetY() + 100);
-                if (firstPos.GetX() < 200) {
-                    target.SetX(firstPos.GetX() * 250);
-                }
-                else {
-                    target.SetX(firstPos.GetX() * -250);
-                }
-                target.SetY(firstPos.GetY() * 1000);
+
                 moveBaseTimer += addTimer;
-                enemyBulletManager.CreateLinerBullet(root, bulletParam, firstPos, target);
+
+                Point basePos = new Point();
+                basePos.SetX(200);
+                basePos.SetY(100);
+
+                double direction = MathUtils.GetDirection(basePos, firstPos);
+                enemyBulletManager.CreateLinerBullet(root, bulletParam, firstPos, direction);
                 period--;
             }
             else {

@@ -46,8 +46,9 @@ public class SpiralAttack extends AttackType{
                 }
                 target.SetY(firstPos.GetY() * 1000);
                 moveBaseTimer += addTimer;
-                enemyBulletManager.CreateSpiralBullet(root, bulletParam, firstPos);
+                // enemyBulletManager.CreateSpiralBullet(root, bulletParam, firstPos);
                 // enemyBulletManager.CreateLinerBullet(root, bulletParam, firstPos, target);
+                enemyBulletManager.CreateDialogBullet(root, bulletParam, firstPos);
                 period--;
             }
             else {

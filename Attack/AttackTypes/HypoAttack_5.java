@@ -46,7 +46,7 @@ public class HypoAttack_5 extends AttackType{
                 }
                 target.SetY(firstPos.GetY() * 1000);
                 moveBaseTimer += addTimer;
-                enemyBulletManager.CreateLinerBullet(root, bulletParam, firstPos, target);
+                // enemyBulletManager.CreateLinerBullet(root, bulletParam, firstPos, target);
                 period--;
             }
             else {
