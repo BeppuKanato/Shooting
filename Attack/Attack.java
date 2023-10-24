@@ -9,7 +9,7 @@ import Manager.PlayerBulletManager;
 import Manager.PlayerManager;
 import javafx.scene.layout.Pane;
 
-public abstract class AttackType {
+public abstract class Attack {
     protected PlayerBulletManager playerBulletManager = PlayerBulletManager.GetInstance();
     protected EnemyBulletManager enemyBulletManager = EnemyBulletManager.GetInstance();
     protected PlayerManager playerManager = PlayerManager.GetInstance();

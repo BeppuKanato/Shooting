@@ -11,8 +11,8 @@ import javafx.scene.paint.Color;
 import javax.management.openmbean.OpenDataException;
 import javax.swing.text.Position;
 
-import Attack.NormalAttack.NormalAttack;
-import Attack.NormalAttack.PANormalAttack;
+import Attack.AttackExe;
+import Attack.PA.PANormalAttack;
 import Bullet.Bullet;
 import Bullet.Bullet.BulletOwner;
 import Bullet.Bullets.LinerBullet;
@@ -25,7 +25,7 @@ public class PA extends Player{
 	private double hitBox = 36;
 	private int shootRate = 10;
 
-	private NormalAttack normalAttack;
+	private AttackExe normalAttack;
 
 	public PA (Pane root, int maxHP, double firstPosX, double firstPosY) {
 		super(maxHP, firstPosX, firstPosY);

@@ -1,4 +1,4 @@
-package Attack.NormalAttack;
+package Attack;
 
 import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 
@@ -13,12 +13,14 @@ import Manager.PlayerManager;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-public abstract class NormalAttack {
+public abstract class AttackExe {
     protected PlayerBulletManager playerBulletManager = PlayerBulletManager.GetInstance();
     protected EnemyBulletManager enemyBulletManager = EnemyBulletManager.GetInstance();
     protected PlayerManager playerManager = PlayerManager.GetInstance();
     protected EnemyManager enemyManager = EnemyManager.GetInstance();
+
     public abstract void ExeuteAttack(Pane root, boolean isSpace, Character attackChar);
+    public abstract void ExecuteMove(Character moveChar);
 
     protected double addTimer = 0.15;
     protected double moveBaseTimer;

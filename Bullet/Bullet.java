@@ -7,6 +7,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import javafx.scene.layout.Pane;
 import Manager.PlayerBulletManager;
+
+import java.util.DuplicateFormatFlagsException;
+
 import Common.Point;
 import Manager.EnemyBulletManager;
 
@@ -24,6 +27,7 @@ public abstract class Bullet {
 	private boolean moveTrigger;
 	private int lifeTime;
 	private BulletParameters bulletParams;
+	private double speed;
 
 	protected Shape bulletShape;
 	protected Point firstPos;
@@ -33,6 +37,7 @@ public abstract class Bullet {
 		bulletPos.SetX(firstPos.GetX());
 		bulletPos.SetY(firstPos.GetY());
 		this.firstPos = firstPos; 
+		this.speed = bulletParams.GetSpeed();
 		this.enable = true;
 		this.moveTrigger = bulletParams.GetMoveTrigger();
 		this.lifeTime = this.bulletParams.GetLifeTime();
@@ -42,6 +47,14 @@ public abstract class Bullet {
 		else if (this.bulletParams.GetOwner() == BulletOwner.ENEMY) {
 			enemyBulletsManager.AddBullets(this);
 		}
+	}
+
+	public double GetSpeed () {
+		return this.speed;
+	}
+
+	public void SetSpeed (double speed) {
+		this.speed = speed;
 	}
 
 	public boolean GetMoveTrigger () {
@@ -93,4 +106,6 @@ public abstract class Bullet {
 	public void DeleteShape (Pane root) {
 		root.getChildren().remove(this.bulletShape);
 	}
+
+	public abstract void SetDirectin (double direction);
 }

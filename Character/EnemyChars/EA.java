@@ -4,19 +4,18 @@ import Character.Enemy;
 import Common.Point;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import Attack.NormalAttack.EANormalAttack;
-import Attack.NormalAttack.NormalAttack;
+import Attack.AttackExe;
+import Attack.EA.EANormalAttack;
 import Bullet.Bullet.BulletOwner;
 import Bullet.Bullets.LinerBullet;
-import Bullet.Bullets.SpiralBullet;
 
 
 public class EA extends Enemy{
-    private double speed = 1;
+    private double speed = 2;
     private double hitBox = 36;
     private int shootRate = 10000;
 
-    private NormalAttack normalAttack;
+    private AttackExe normalAttack;
 
     public EA (Pane root, int maxHP, double firstPosX, double firstPosY) {
 		super(maxHP, firstPosX, firstPosY);
@@ -35,10 +34,8 @@ public class EA extends Enemy{
 
     @Override
     public void CharMove (double timer) {
-        double moveY = 100 + 50 * (Math.sin(timer * this.GetSpeed()));
-        double moveX = 200 + 120 * Math.sin((timer / 6) * this.GetSpeed());
-
-        this.SetPosition(moveX, moveY);
+        // this.normalAttack.ExecuteMove(this);
+        // this.SetPosition(targetPos.GetX(), targetPos.GetY());
     }
 
     @Override

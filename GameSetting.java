@@ -8,7 +8,7 @@ public class GameSetting {
 	
 	private GameSetting () {
 		screenWidth = 400;
-		screenHeight = 800;
+		screenHeight = 600;
 		FPS = 60_000_000L;
 	}
 	

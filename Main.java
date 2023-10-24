@@ -34,7 +34,7 @@ public class Main extends Application {
 	}
 	
 	private void InitializeGame (GameScreen gameScreen) {
-		Player player = new PA(gameScreen.GetPane(), 10, 200, 600);
+		Player player = new PA(gameScreen.GetPane(), 10, 200, 500);
 		playerManager.SetPlayer(player);
 
 		Enemy enemy = new EA(gameScreen.GetPane(), 10, 200, 100);

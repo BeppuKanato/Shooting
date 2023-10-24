@@ -51,28 +51,7 @@ public class EnemyBulletManager {
 		Bullet rtn = bulletFactory.CreateLinerBullet(root, bulletParameters, firstPos, direction);
 
 		return rtn;
-	}
-
-	public void CreateSpiralBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
-		bulletFactory.CreateSpiralBullet(root, bulletParameters, firstPos);
-	}
-
-	public void CreateHypoCycloidBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
-		bulletFactory.CreateHypoCycloidBullet(root, bulletParameters, firstPos);
-	}
-
-	public void CreateRoseCurveBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
-		bulletFactory.CreateRoseCurveBullet(root, bulletParameters, firstPos);
-	}
-
-	public void CreateParabolaBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
-		bulletFactory.CreateParabolaBullet(root, bulletParameters, firstPos);
-	}
-
-	public void CreateDialogBullet (Pane root, BulletParameters bulletParameters, Point firstPos) {
-		bulletFactory.CreateDialogBullet(root, bulletParameters, firstPos);
-	}
-	
+	}	
 	
 	public void RemoveBullets (Bullet bullet) {
 		enemyBullets.remove(bullet);

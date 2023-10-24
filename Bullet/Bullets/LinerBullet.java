@@ -21,9 +21,8 @@ public class LinerBullet extends Bullet {
 	
 	@Override
 	public void BulletMove (double timer) {
-		BulletParameters bulletParam = this.GetBulletParams();
-		double moveX = this.GetBulletPos().GetX() + bulletParam.GetSpeed() * Math.cos(this.direction);
-		double moveY = this.GetBulletPos().GetY() + bulletParam.GetSpeed() * Math.sin(this.direction);
+		double moveX = this.GetBulletPos().GetX() + this.GetSpeed() * Math.cos(this.direction);
+		double moveY = this.GetBulletPos().GetY() + this.GetSpeed() * Math.sin(this.direction);
 		
 		// double moveX = this.firstPos.GetX() + bulletParam.GetSpeed() * Math.cos(this.direction);
 		// double moveY = this.firstPos.GetY() + bulletParam.GetSpeed() * Math.sin(this.direction);
@@ -38,5 +37,10 @@ public class LinerBullet extends Bullet {
 		if (this.GetLifeTime() < 0 ) {
 			this.SetEnable(false);
 		}
+	}
+
+	@Override
+	public void SetDirectin (double direction) {
+		this.direction = direction;
 	}
 }
