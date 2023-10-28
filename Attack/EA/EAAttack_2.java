@@ -40,7 +40,7 @@ public class EAAttack_2 extends Attack{
             Random random = new Random();
             for (int i = 0; i < this.NUM_BULLETS; i++) {
                 double direction = startAngle + 2 * Math.PI * i / NUM_BULLETS;
-                this.bulletList.add(enemyBulletManager.CreateLinerBullet(root, bulletParam, firstPos, direction));
+                this.bulletList.add(enemyBulletManager.CreateLinerBullet(root, bulletParam, firstPos, direction, 10));
             }
 
             if (decreTrigger) {

@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 import Attack.AttackExe;
 import Attack.EA.EANormalAttack;
 import Bullet.Bullet.BulletOwner;
-import Bullet.Bullets.LinerBullet;
+import Bullet.Bullets.CircleLinerBullet;
 
 
 public class EA extends Enemy{

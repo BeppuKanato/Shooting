@@ -1,4 +1,4 @@
-package Attack.PA;
+package Attack.EA;
 
 import java.beans.BeanProperty;
 import java.util.ArrayList;
@@ -18,15 +18,17 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PAAttack_1 extends Attack{
+public class EAAttack_6 extends Attack{
+
+    int m = 1;
 
     private double moveBaseTimer = 0;
     private double addTimer = 0.15;
     private int period;
     private List<Bullet> bulletList = new ArrayList<Bullet>();
 
-    public PAAttack_1(double speed, BulletOwner owner, Color color, boolean  moveTrigger) {
-        this.attackRate = 0;
+    public EAAttack_6(double speed, BulletOwner owner, Color color, boolean  moveTrigger) {
+        this.attackRate = 60;
         this.attackDelay = 0;
         this.bulletParam = new BulletParameters(speed, owner, new double[10], 5, color, 150, moveTrigger);
 
@@ -39,30 +41,29 @@ public class PAAttack_1 extends Attack{
             this.attackDelay -= 1;
         }
         if (attackDelay <= 0) {
-            if (period > 0) {
-                Point target = new Point();
-                Point firstPos = MathUtils.CalcRoseCurve(moveBaseTimer, 150, 1, 1);
-                firstPos.SetX(firstPos.GetX() + 200);
-                firstPos.SetY(firstPos.GetY() + 100);
+            for (int i =0; i <  70; i ++) {
+                Point firstPos = MathUtils.CalcRoseCurve(moveBaseTimer, 150, m, 1);
+                firstPos.SetX(firstPos.GetX() + attackChar.GetPosition().GetX());
+                firstPos.SetY(firstPos.GetY() + attackChar.GetPosition().GetY());
 
                 moveBaseTimer += addTimer;
 
                 Point basePos = new Point();
-                basePos.SetX(200);
-                basePos.SetY(100);
+                basePos.SetX(attackChar.GetPosition().GetX());
+                basePos.SetY(attackChar.GetPosition().GetY());
 
                 double direction = MathUtils.GetDirection(basePos, firstPos);
                 this.bulletList.add(enemyBulletManager.CreateLinerBullet(root, bulletParam, firstPos, direction, 10));
-                period--;
             }
-            else {
-                period = (int)(2 * Math.PI / addTimer);
-                attackDelay = attackRate;
-                for (Bullet bullet : bulletList) {
-                    bullet.SetMoveTrigger(true);
-                }
-                bulletList.removeAll(bulletList);
+            m++;
+            if (m > 5) {
+                m = 1;
             }
+            attackDelay = attackRate;
+            for (Bullet bullet : bulletList) {
+                bullet.SetMoveTrigger(true);
+            }
+            bulletList.removeAll(bulletList);
         }
     }
 }

@@ -14,6 +14,13 @@ public class MathUtils {
         return rtn;
     }
 
+    public static double GetDistanceX (double x1, double x2) {
+        return Math.abs(x2 - x1);
+    }
+
+    public static double GetDistanceY (double y1, double y2) {
+        return Math.abs(y2 - y1); 
+    }
     public static Point ClacQuadratic (int a, int b, int c, double x) {
         double moveY = a * Math.pow(x, 2) + b * x + c;
 
@@ -76,4 +83,25 @@ public class MathUtils {
 
 		return rtn;
 	}
+
+    public static Point CalcRotateMatrix (double x, double y, double radian) {
+        double rotateX = x * Math.cos(radian) - y * Math.sin(radian);
+        double rotateY = x * Math.sin(radian) + y * Math.cos(radian);
+
+        Point rtn = new Point();
+        rtn.SetX(rotateX);
+        rtn.SetY(rotateY);
+
+        return rtn;
+    }
+
+    public static Point SubVector (Point a, Point b) {
+        double x = a.GetX() - b.GetX();
+        double y = a.GetY() - b.GetY(); 
+
+        Point rtn = new Point();
+        rtn.SetX(x);
+        rtn.SetY(y);
+        return rtn;
+    }
 }

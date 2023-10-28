@@ -8,12 +8,12 @@ import Bullet.BulletParameters;
 import Common.MathUtils;
 import Common.Point;
 
-public class LinerBullet extends Bullet {
+public class CircleLinerBullet extends Bullet {
 	private double direction;
 
-	public LinerBullet (Pane root, BulletParameters bulletParams, Point firstPos, double directoin) {
+	public CircleLinerBullet (Pane root, BulletParameters bulletParams, Point firstPos, double directoin, double radius) {
 		super(bulletParams, firstPos);
-		this.bulletShape = new Circle(0, 0, 10);
+		this.bulletShape = new Circle(0, 0, radius);
 		this.bulletShape.setFill(this.GetBulletParams().GetColor());
 		this.direction = directoin;
 		root.getChildren().add(bulletShape);

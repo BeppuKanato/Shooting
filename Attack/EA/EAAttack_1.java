@@ -52,7 +52,7 @@ public class EAAttack_1 extends Attack{
                 basePos.SetY(100);
 
                 double direction = MathUtils.GetDirection(basePos, firstPos);
-                this.bulletList.add(enemyBulletManager.CreateLinerBullet(root, bulletParam, firstPos, direction));
+                this.bulletList.add(enemyBulletManager.CreateLinerBullet(root, bulletParam, firstPos, direction, 10));
                 period--;
             }
             else {

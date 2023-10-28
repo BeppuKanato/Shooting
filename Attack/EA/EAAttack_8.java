@@ -13,9 +13,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import java.util.List;
 
-public class EAAttack_4 extends Attack{
-    private int NUM_BULLETS = 36;
-    private double startAngle = 0;
+public class EAAttack_8 extends Attack{
+    private int NUM_BULLETS = 10;
+    private double startAngle = 70;
+
+    int changeStart = -25;
 
     private boolean isWait = false;
 
@@ -23,8 +25,8 @@ public class EAAttack_4 extends Attack{
 
     private List<Bullet> bulletList = new ArrayList<Bullet>();
 
-    public EAAttack_4(double speed, BulletOwner owner, Color color, boolean  moveTrigger) {
-        this.attackRate = 60;
+    public EAAttack_8(double speed, BulletOwner owner, Color color, boolean  moveTrigger) {
+        this.attackRate = 15;
         this.attackDelay = 0;
         this.bulletParam = new BulletParameters(speed, owner, new double[10], 5, color, 150, true);
     }
@@ -42,25 +44,18 @@ public class EAAttack_4 extends Attack{
         if (attackDelay <= 0) {
             Random random = new Random();
             for (int i = 0; i < this.NUM_BULLETS; i++) {
-                double direction = startAngle + 2 * Math.PI * i / NUM_BULLETS;
+                double direction = Math.toRadians(startAngle) + 0.3 * Math.PI * i / NUM_BULLETS;
                 this.bulletList.add(enemyBulletManager.CreateLinerBullet(root, bulletParam, firstPos, direction, 10));
             }
-            isWait = true;
-            attackDelay = attackRate;
-        }
 
-        if (isWait) {
-            waitTime--;
-            if (waitTime <= 0) {
-                for (Bullet bullet : bulletList) {
-                    double direction = MathUtils.GetDirection(bullet.GetBulletPos(), playerManager.GetPlayerPos());
-                    bullet.SetDirectin(direction);
-                }
-                bulletList.removeAll(bulletList);
-                attackDelay = attackRate;
-                isWait = false;
-                waitTime = 30;
+            changeStart *= -1;
+            startAngle += changeStart;
+
+            attackDelay = attackRate;
+            for (Bullet bullet : bulletList) {
+                bullet.SetMoveTrigger(true);
             }
+            bulletList.removeAll(bulletList);
         }
     }
 }

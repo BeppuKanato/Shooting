@@ -15,14 +15,14 @@ import Attack.AttackExe;
 import Attack.PA.PANormalAttack;
 import Bullet.Bullet;
 import Bullet.Bullet.BulletOwner;
-import Bullet.Bullets.LinerBullet;
+import Bullet.Bullets.CircleLinerBullet;
 import Character.Player;
 import Common.Point;
 
 //PA = plyerA
 public class PA extends Player{
 	private double speed = 3;
-	private double hitBox = 36;
+	private double hitBox = 9;
 	private int shootRate = 10;
 
 	private AttackExe normalAttack;

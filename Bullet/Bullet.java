@@ -4,7 +4,10 @@ package Bullet;
 // import application.Point;
 // import application.Manager.BulletManager;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
+import javafx.scene.transform.Rotate;
 import javafx.scene.layout.Pane;
 import Manager.PlayerBulletManager;
 
@@ -69,6 +72,10 @@ public abstract class Bullet {
 		return this.bulletPos;
 	}
 
+	public Shape GetBulletShape () {
+		return this.bulletShape;
+	}
+
 	public void SetBulletPos (double x, double y) {
 		this.bulletPos.SetX(x);
 		this.bulletPos.SetY(y);
@@ -105,6 +112,10 @@ public abstract class Bullet {
 
 	public void DeleteShape (Pane root) {
 		root.getChildren().remove(this.bulletShape);
+	}
+
+	public void RotateShape (Point center, double radian) {
+		this.bulletShape.getTransforms().add(new Rotate(radian,  center.GetX(), center.GetY()));
 	}
 
 	public abstract void SetDirectin (double direction);

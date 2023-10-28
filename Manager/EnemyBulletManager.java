@@ -18,6 +18,7 @@ import Common.Point;
 
 public class EnemyBulletManager {
 	private static EnemyBulletManager instance;
+	private PlayerManager playerManager = PlayerManager.GetInstance();
 	private List<Bullet> enemyBullets = new ArrayList<Bullet>();
 	private BulletFactory bulletFactory = new BulletFactory();
 	
@@ -47,8 +48,22 @@ public class EnemyBulletManager {
 		}
 	}
 
-	public Bullet CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos, double direction) {
-		Bullet rtn = bulletFactory.CreateLinerBullet(root, bulletParameters, firstPos, direction);
+	public void IsCollidingWithPlayer (Pane root) {
+		for (Bullet bullet : enemyBullets) {
+			if (bullet.GetEnable()) {
+				playerManager.IsCollidingWithBullet(bullet, root);
+			}
+		}
+	}
+
+	public Bullet CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos, double direction, double radius) {
+		Bullet rtn = bulletFactory.CreateLinerBullet(root, bulletParameters, firstPos, direction, radius);
+
+		return rtn;
+	}	
+
+	public Bullet CreateRectangularBullet (Pane root, BulletParameters bulletParameters, Point firstPos, double direction, Point size) {
+		Bullet rtn = bulletFactory.CreateRectangularBullet(root, bulletParameters, firstPos, direction, size);
 
 		return rtn;
 	}	

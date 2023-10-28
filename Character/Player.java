@@ -3,12 +3,16 @@ package Character;
 import Common.Point;
 // import application.Point;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 
 public abstract class Player extends Character{
 	private Point p1 = new Point();
 	private Point p2 = new Point();
 	private Point p3 = new Point();
+
+	private double radius = 10;
 	
 	private void SetShapeSize (double p1_x, double p1_y, double p2_x, double p2_y, double p3_x, double p3_y) {
 		this.p1.SetX(p1_x);
@@ -21,9 +25,7 @@ public abstract class Player extends Character{
 	
 	public Player (int maxHP, double firstPosX, double firstPosY) {
 		super(maxHP, firstPosX, firstPosY);
-		
-		this.SetShapeSize(0, 36, 36, 36, 18, 0);
-		this.charShape = new Polygon(p1.GetX(), p1.GetY(), p2.GetX(), p2.GetY(), p3.GetX(), p3.GetY());
+		this.charShape = new Circle(0, 0, radius);
 	}
 	
 	public abstract void CharMove (boolean isUp, boolean isDown, boolean isRight, boolean isLeft);

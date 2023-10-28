@@ -4,6 +4,8 @@ package Manager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import javafx.scene.control.RadioButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import Manager.EnemyManager;
@@ -52,8 +54,8 @@ public class PlayerBulletManager {
 		}
 	}
 
-	public void CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos, double direction) {
-		bulletFactory.CreateLinerBullet(root, bulletParameters, firstPos, direction);
+	public void CreateLinerBullet (Pane root, BulletParameters bulletParameters, Point firstPos, double direction, double radius) {
+		bulletFactory.CreateLinerBullet(root, bulletParameters, firstPos, direction, radius);
 	}
 	
 	public void RemoveBullets (Bullet bullet) {
